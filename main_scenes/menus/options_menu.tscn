@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://b27xpmt51ajfg"]
+
+[ext_resource type="LabelSettings" uid="uid://x6yphufd1ppd" path="res://resources/ui/header_settings.tres" id="1_c5csj"]
+[ext_resource type="Theme" uid="uid://dxyu51du6xt8k" path="res://resources/ui/menu_theme.tres" id="1_h1gfu"]
+[ext_resource type="Script" uid="uid://bjur6ik8nil8a" path="res://main_scenes/menus/scripts/options_menu.gd" id="1_ipjqj"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="2_h1gfu"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="3_8wyxj"]
+[ext_resource type="PackedScene" uid="uid://y23bf8ew2u57" path="res://ui/audio_slider.tscn" id="5_qvjux"]
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="6_ipjqj"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ipjqj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h1gfu")
+
+[node name="InnerMarginsContainer" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/InnerMarginsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HeaderPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HeaderLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/HeaderPanel"]
+layout_mode = 2
+text = "Options"
+label_settings = ExtResource("1_c5csj")
+
+[node name="OptionsPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer"]
+layout_mode = 2
+text = "Master"
+label_settings = ExtResource("2_h1gfu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterSlider" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer" instance=ExtResource("5_qvjux")]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("2_h1gfu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicSlider" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer" instance=ExtResource("5_qvjux")]
+layout_mode = 2
+bus = "Music"
+
+[node name="SfxLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer"]
+layout_mode = 2
+text = "Sfx"
+label_settings = ExtResource("2_h1gfu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SfxSlider" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer" instance=ExtResource("5_qvjux")]
+layout_mode = 2
+bus = "Sfx"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer"]
+layout_mode = 2
+
+[node name="FullscreenButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer/HBoxContainer" instance=ExtResource("6_ipjqj")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Fullscreen"
+
+[node name="BorderlessButton" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer/HBoxContainer" instance=ExtResource("6_ipjqj")]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Borderless"
+
+[node name="QuitButton" parent="MarginContainer/InnerMarginsContainer" instance=ExtResource("3_8wyxj")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 0.0
+grow_vertical = 0
+text = "Back"
+back = true
+
+[connection signal="toggled" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer/HBoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="toggled" from="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/OptionsPanel/OptionsContainer/HBoxContainer/BorderlessButton" to="." method="_on_borderless_button_toggled"]
