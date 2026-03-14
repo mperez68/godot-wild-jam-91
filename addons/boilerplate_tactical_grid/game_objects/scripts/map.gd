@@ -13,7 +13,7 @@ const INTERVENING_DEPTH: int = 2	# 0 is starting position, 1 is adjacent tiles, 
 @export_range(-1.0, 5.0, 0.1, "or_greater") var climb_weight: float = -1
 @export var use_fog: bool = true
 
-@onready var util_layers: Array[TileMapLayer] = [%FogOfWar, %HighlightLayer, %AttackLayer, %HoverLayer  ]
+@onready var util_layers: Array[TileMapLayer] = [%FogOfWar, %HighlightLayer, %TargetLayer, %HoverLayer  ]
 @onready var fog_of_war: TileMapLayer = %FogOfWar
 @onready var target_layer: TileMapLayer = %TargetLayer
 @onready var highlight_layer: TileMapLayer = %HighlightLayer
@@ -48,8 +48,8 @@ func initialize():
 	nav = AStar3D.new()
 	var fog_coverage: Array[Vector2i]
 	for index in layers.size():
-		for x in used_rect.size.x + 1:
-			for y in used_rect.size.y + 1:
+		for x in used_rect.size.x:
+			for y in used_rect.size.y:
 				var pos: Vector3i = Vector3i(x, y, index)
 				if can_stand(pos):
 					_add_point(pos)
@@ -58,6 +58,8 @@ func initialize():
 					fog_coverage.push_back(pos_2d)
 	if use_fog:
 		fog_of_war.set_cells_terrain_connect(fog_coverage, 0, 0)
+		for layer in layers:
+			layer.changed.connect(update_fog)
 	is_initialized = true
 	initialized.emit()
 
@@ -164,17 +166,28 @@ func is_navigable(start: Vector3i, end: Vector3i, max_weight: int = 0) -> bool:
 	var route_length: int = get_route(start, end).size()
 	return route_length > 0 and (route_length <= max_weight if max_weight > 0 else true)
 
+
 ##
 func is_in_range(start: Vector3i, end: Vector3i, max_distance: float = 9999.0, require_visible: bool = false) -> bool:
-	if start.distance_to(end) > max_distance:
+	if start.distance_to(end) > (max_distance):
 		return false
 	elif require_visible:
 		var reps: int = max(abs(start.x - end.x), abs(start.y - end.y), abs(start.z - end.z))
 		for i: float in reps:
 			var mid: float = i / float(reps)
-			var midpoint: Vector3i = Vector3i(lerp(start.x, end.x, mid), lerp(start.y, end.y, mid), lerp(start.z, end.z, mid))
-			var cell: TileData = get_cell_tile_data(midpoint)
-			if cell and cell.get_custom_data(TacGrid.blocking_key) and midpoint != end:
+			var midpoints: Array[Vector3i] = []
+			midpoints.push_back(Vector3i(lerp(start.x, end.x, mid), lerp(start.y, end.y, mid), lerp(start.z, end.z, mid)))
+			midpoints.push_back(Vector3i(ceil(lerp(start.x, end.x, mid)), lerp(start.y, end.y, mid), lerp(start.z, end.z, mid)))
+			midpoints.push_back(Vector3i(lerp(start.x, end.x, mid), ceil(lerp(start.y, end.y, mid)), lerp(start.z, end.z, mid)))
+			midpoints.push_back(Vector3i(ceil(lerp(start.x, end.x, mid)), ceil(lerp(start.y, end.y, mid)), lerp(start.z, end.z, mid)))
+			var cell: TileData
+			for midpoint in midpoints:
+				if midpoint == end:
+					return true
+				cell = get_cell_tile_data(midpoint)
+				if cell and cell.get_custom_data(TacGrid.blocking_key):
+					break
+			if cell and cell.get_custom_data(TacGrid.blocking_key):
 				return false
 	return true
 

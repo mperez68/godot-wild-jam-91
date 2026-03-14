@@ -18,17 +18,19 @@ var key_vector: Vector2 = Vector2.ZERO
 
 # ENGINE
 func _ready() -> void:
+	%CanvasLayer.show()
 	for dir in direction_boxes:
 		dir.modulate = edge_scroll_hidden
 
 func _physics_process(delta: float) -> void:
 	if focus_target:
-		position = focus_target.position
+		position = focus_target.position.round()
 		return
 	position += (scroll_vector if scroll_vector else key_vector) * scroll_speed * delta
 	var view_size := get_viewport_rect().size
 	position.x = clamp(position.x, limit_left + view_size.x / 2, limit_right - view_size.x / 2)
 	position.y = clamp(position.y, limit_top + view_size.y / 2, limit_bottom - view_size.y / 2)
+	position = position.round()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("scroll_up") or event.is_action("scroll_right") or event.is_action("scroll_down") or event.is_action("scroll_left"):

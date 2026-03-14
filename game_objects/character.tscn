@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://c5guvhsa4pyvq"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_e6rti"]
+[ext_resource type="Script" uid="uid://bbgok4umrpeut" path="res://game_objects/scripts/character.gd" id="2_i0pnu"]
+[ext_resource type="Texture2D" uid="uid://b43xw8crsx7ik" path="res://assets/sprites/temp_character.png" id="3_i0pnu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylqgr"]
+atlas = ExtResource("3_i0pnu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0pnu"]
+atlas = ExtResource("3_i0pnu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oebs"]
+atlas = ExtResource("3_i0pnu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a73ab"]
+atlas = ExtResource("3_i0pnu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8oebs"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_ylqgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0pnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oebs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a73ab")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="Character" unique_id=1426874908 instance=ExtResource("1_e6rti")]
+script = ExtResource("2_i0pnu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1081542401]
+sprite_frames = SubResource("SpriteFrames_8oebs")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9843958
