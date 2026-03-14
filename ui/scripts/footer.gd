@@ -1,5 +1,5 @@
 @tool
-class_name Footer extends RichTextLabel
+class_name Footer extends Label
 
 
 # ENGINE
@@ -16,4 +16,4 @@ func _ready():
 
 # PRIVATE
 func _update_text():
-	text = str("[center][font_size=12]%s, %s[/font_size][/center]" % [PREFIX, Time.get_date_dict_from_unix_time(roundi(Time.get_unix_time_from_system())).year])
+	text = str("%s, %s" % [PREFIX, Time.get_date_dict_from_unix_time(roundi(Time.get_unix_time_from_system())).year])

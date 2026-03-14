@@ -4,6 +4,10 @@ class_name MenuControl extends Control
 # ENGINE
 func _ready():
 	MusicManager.play("Menu")
+	var first_button = _search_for_button(self)
+	if first_button:
+		first_button.grab_focus()
+
 
 #func _enter_tree() -> void:
 func _init() -> void:
@@ -17,6 +21,14 @@ func _init() -> void:
 
 
 # PRIVATE
+func _search_for_button(root: Node) -> Button:
+	if root is Button:
+		return root
+	for child in root.get_children():
+		var temp: Button = _search_for_button(child)
+		if temp:
+			return temp
+	return null
 
 
 # SIGNALS

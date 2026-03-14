@@ -1,4 +1,9 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://x6yphufd1ppd"]
 
+[ext_resource type="FontFile" uid="uid://cf8cua7q243ip" path="res://assets/fonts/Wizard.otf" id="1_iwxya"]
+
 [resource]
-font_size = 64
+font = ExtResource("1_iwxya")
+font_size = 36
+outline_size = 10
+outline_color = Color(0.29411766, 0.23921569, 0.26666668, 1)

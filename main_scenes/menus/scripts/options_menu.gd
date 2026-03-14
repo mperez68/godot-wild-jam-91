@@ -6,6 +6,7 @@ class_name OptionsMenu extends MenuControl
 
 # ENGINE
 func _ready():
+	super()
 	fullscreen_button.set_pressed_no_signal(SettingsManager.game_settings.fullscreen)
 	borderless_button.set_pressed_no_signal(SettingsManager.game_settings.borderless)
 
