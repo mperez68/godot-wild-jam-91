@@ -27,6 +27,7 @@ SceneManager="*res://global/scene_manager.tscn"
 SfxManager="*res://global/sfx_manager.tscn"
 SettingsManager="*res://global/settings_manager.tscn"
 SaveStateManager="*uid://chrchktrakx3e"
+TacGrid="*uid://ds8tm6n5wum7p"
 
 [display]
 
@@ -36,6 +37,10 @@ window/size/window_width_override=1024
 window/size/window_height_override=768
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/boilerplate_tactical_grid/plugin.cfg")
 
 [gui]
 
