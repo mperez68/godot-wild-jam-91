@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://diln7n0kthfvr"]
+
+[ext_resource type="Texture2D" uid="uid://bda4dgdo6ak0q" path="res://assets/sprites/orcs.png" id="1_bhon6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhon6"]
+atlas = ExtResource("1_bhon6")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0l5a"]
+atlas = ExtResource("1_bhon6")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp6rp"]
+atlas = ExtResource("1_bhon6")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocwx8"]
+atlas = ExtResource("1_bhon6")
+region = Rect2(60, 0, 20, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_bhon6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0l5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp6rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocwx8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]

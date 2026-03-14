@@ -1,6 +1,8 @@
 @tool
 class_name GridNode2D extends Node2D
 
+const ENTITY_KEY: String = "entity"
+
 ## Emitted after this nodes grid position has changed. It includes the position it moved from.
 signal moved(start: Vector3i)
 

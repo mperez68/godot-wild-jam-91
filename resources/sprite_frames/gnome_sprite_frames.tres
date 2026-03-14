@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://djrrmvpq8i6fa"]
+
+[ext_resource type="Texture2D" uid="uid://w3s7dog6gxwh" path="res://assets/sprites/gnome_1.png" id="1_o42li"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o42li"]
+atlas = ExtResource("1_o42li")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhoog"]
+atlas = ExtResource("1_o42li")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yli7"]
+atlas = ExtResource("1_o42li")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmh88"]
+atlas = ExtResource("1_o42li")
+region = Rect2(60, 0, 20, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_o42li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhoog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yli7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmh88")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]

@@ -2,49 +2,30 @@
 
 [ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_e6rti"]
 [ext_resource type="Script" uid="uid://bbgok4umrpeut" path="res://game_objects/scripts/character.gd" id="2_i0pnu"]
-[ext_resource type="Texture2D" uid="uid://b43xw8crsx7ik" path="res://assets/sprites/temp_character.png" id="3_i0pnu"]
+[ext_resource type="SpriteFrames" uid="uid://sirg7scjtkun" path="res://resources/sprite_frames/generic_sprite_frames.tres" id="3_i0pnu"]
+[ext_resource type="Texture2D" uid="uid://tf124p38cp5c" path="res://assets/sprites/direction_arrow.png" id="3_ylqgr"]
+[ext_resource type="Shader" uid="uid://4lia8i0gj8nr" path="res://resources/shaders/outline.gdshader" id="4_8oebs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ylqgr"]
-atlas = ExtResource("3_i0pnu")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0pnu"]
-atlas = ExtResource("3_i0pnu")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8oebs"]
-atlas = ExtResource("3_i0pnu")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a73ab"]
-atlas = ExtResource("3_i0pnu")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8oebs"]
-animations = [{
-"frames": [{
-"duration": 4.0,
-"texture": SubResource("AtlasTexture_ylqgr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0pnu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8oebs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a73ab")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 12.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a73ab"]
+shader = ExtResource("4_8oebs")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.8235294, 0.7882353, 0.64705884, 1)
+shader_parameter/texture_region = Vector4(0, 0, 0, 0)
 
 [node name="Character" unique_id=1426874908 instance=ExtResource("1_e6rti")]
+z_index = 1
 script = ExtResource("2_i0pnu")
+grid_position = Vector3i(0, 0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1081542401]
-sprite_frames = SubResource("SpriteFrames_8oebs")
+[node name="ArrowSprite" type="Sprite2D" parent="." index="0" unique_id=1805557467]
+unique_name_in_owner = true
+texture = ExtResource("3_ylqgr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
+material = SubResource("ShaderMaterial_a73ab")
+sprite_frames = ExtResource("3_i0pnu")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.9843958
+frame_progress = 0.6291818
+
+[connection signal="moved" from="." to="." method="_on_moved"]

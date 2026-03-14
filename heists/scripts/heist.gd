@@ -4,8 +4,6 @@ class_name Heist extends Node2D
 
 
 # ENGINE
-func _ready():
-	map.update_fog()
 
 
 # PUBLIC

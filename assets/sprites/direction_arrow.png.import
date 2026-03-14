@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg6googtjw57l"
-path="res://.godot/imported/gnome_3.png-8b7fdf8f69b6681ab650ef10dc0772fd.ctex"
+uid="uid://tf124p38cp5c"
+path="res://.godot/imported/direction_arrow.png-7747c0fe20b3e70c6600a476e6c2ce9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/gnome_3.png"
-dest_files=["res://.godot/imported/gnome_3.png-8b7fdf8f69b6681ab650ef10dc0772fd.ctex"]
+source_file="res://assets/sprites/direction_arrow.png"
+dest_files=["res://.godot/imported/direction_arrow.png-7747c0fe20b3e70c6600a476e6c2ce9c.ctex"]
 
 [params]
 

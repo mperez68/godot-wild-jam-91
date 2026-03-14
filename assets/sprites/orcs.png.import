@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxanckudks28l"
-path="res://.godot/imported/gnome_2.png-40361d7494c01d9462382bde6185bd54.ctex"
+uid="uid://bda4dgdo6ak0q"
+path="res://.godot/imported/orcs.png-e5d2c4ddc0e541a135dfe533140b09f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/gnome_2.png"
-dest_files=["res://.godot/imported/gnome_2.png-40361d7494c01d9462382bde6185bd54.ctex"]
+source_file="res://assets/sprites/orcs.png"
+dest_files=["res://.godot/imported/orcs.png-e5d2c4ddc0e541a135dfe533140b09f9.ctex"]
 
 [params]
 

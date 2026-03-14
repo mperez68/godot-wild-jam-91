@@ -211,16 +211,20 @@ func update_fog():
 				for y in range(max(pos.y - viewer.view_range - 1, used_rect.position.y), pos.y + viewer.view_range + 2):
 					var tile: Vector3i = Vector3i(x, y, viewer.grid_position.z)
 					var tile_2d: Vector2i = Vector2i(x, y)
-					if is_in_range(viewer.grid_position, tile, viewer.view_range, true):
-						cleared_tiles.push_back(tile_2d)
-					elif !is_in_fog(tile):
-						covered_tiles.push_back(tile_2d)
+					if used_rect.has_point(tile_2d):
+						if is_in_range(viewer.grid_position, tile, viewer.view_range, true):
+							cleared_tiles.push_back(tile_2d)
+						elif !is_in_fog(tile):
+							covered_tiles.push_back(tile_2d)
 	fog_of_war.set_cells_terrain_connect(covered_tiles, 0, 0)
 	fog_of_war.set_cells_terrain_connect(cleared_tiles, 0, 2)
+	for entity in get_tree().get_nodes_in_group(GridNode2D.ENTITY_KEY):
+		if entity is GridNode2D:
+			entity.visible = !is_in_fog(entity.grid_position)
 
 func is_in_fog(center: Vector3i) -> bool:
 	var cell: TileData = fog_of_war.get_cell_tile_data(Vector2i(center.x, center.y))
-	return !cell or cell.terrain == 5
+	return cell and cell.terrain != 2
 
 func is_highlighted(center: Vector3i) -> bool:
 	var cell: TileData = highlight_layer.get_cell_tile_data(Vector2i(center.x, center.y))
