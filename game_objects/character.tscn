@@ -17,7 +17,10 @@ z_index = 1
 script = ExtResource("2_i0pnu")
 display_name = ""
 sub_name = ""
+speed = 4
+action_limit = 2
 grid_position = Vector3i(0, 0, 1)
+blocking = true
 
 [node name="ArrowSprite" type="Sprite2D" parent="." index="0" unique_id=1805557467]
 unique_name_in_owner = true
@@ -31,4 +34,9 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.6291818
 
+[node name="MoveTimer" type="Timer" parent="." index="2" unique_id=679955041]
+unique_name_in_owner = true
+wait_time = 0.35
+
 [connection signal="moved" from="." to="." method="_on_moved"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

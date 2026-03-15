@@ -21,6 +21,10 @@ enum Facing{ RIGHT, DOWN, LEFT, UP }
 		grid_position = value
 		z_index = value.z
 		if !Engine.is_editor_hint() and is_node_ready():
+			if blocking:
+				var map: Map = TacGrid.get_map()
+				map.set_point_disabled(start, false)
+				map.set_point_disabled(grid_position)
 			moved.emit(start)
 ## The direciton this node is facing. Calls _update_face() when changed. By default, this changes the rotation of the node to correspond.
 @export var facing: Facing = Facing.RIGHT:
@@ -44,12 +48,20 @@ enum Facing{ RIGHT, DOWN, LEFT, UP }
 			add_to_group(TacGrid.viewer_key)
 		else:
 			remove_from_group(TacGrid.viewer_key)
+## If enabled, blocks pathing on the map.
+@export var blocking: bool = false:
+	set(value):
+		blocking = value
+		if !Engine.is_editor_hint() and is_node_ready():
+			TacGrid.get_map().set_point_disabled(grid_position, blocking)
 
 
 # ENGINE
 func _ready():
 		if Engine.is_editor_hint():
 			set_notify_transform(true)
+		else:
+			blocking = blocking
 
 func _notification(what):
 	if what == NOTIFICATION_TRANSFORM_CHANGED and snap_to_grid:

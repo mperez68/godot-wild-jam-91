@@ -2,9 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://c5guvhsa4pyvq" path="res://game_objects/character.tscn" id="1_sqdci"]
 [ext_resource type="SpriteFrames" uid="uid://djrrmvpq8i6fa" path="res://resources/sprite_frames/gnome_sprite_frames.tres" id="2_gq6xs"]
+[ext_resource type="Script" uid="uid://b27g4u4oi37j3" path="res://game_objects/scripts/gnome.gd" id="2_hbmc6"]
 
 [node name="Gnome" unique_id=1426874908 groups=["player"] instance=ExtResource("1_sqdci")]
-display_name = "Gnomeo"
+script = ExtResource("2_hbmc6")
+beers_stolen = 0
+trinkets_stolen = 0
+speed = 5
+grid_position = Vector3i(0, 0, 0)
 view_range = 6.0
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]

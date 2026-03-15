@@ -110,14 +110,15 @@ func get_cell_tile_data_local(local_position: Vector2) -> TileData:
 
 ## Disables or enables the specified point for pathfinding. Useful for making a temporary obstacle.
 func set_point_disabled(pos: Vector3i, solid: bool = true):
-	nav.set_point_disabled(_grid3d_to_id(pos), solid)
+	if nav.has_point(_grid3d_to_id(pos)):
+		nav.set_point_disabled(_grid3d_to_id(pos), solid)
 
 # Navigation
 ## Returns an array with the points that are in the path found by AStar3D between the given points. The array is ordered from the starting point to the ending point of the path.
 ## start_inclusive will include the start point of the route. # end_inclusive will include the final point in the route.
 ## If there is no valid path to the target, and allow_partial_path is true, returns a path to the point closest to the target that can be reached.
 ## Note: This method is not thread-safe; it can only be used from a single Thread at a given time. Consider using Mutex to ensure exclusive access to one thread to avoid race conditions.
-func get_route(start: Vector3i, end: Vector3i, start_inclusive: bool = false, end_inclusive: bool = true) -> Array[Vector3i]:	# TODO include tolerance to find nearest point within a given radius.
+func get_route(start: Vector3i, end: Vector3i, start_inclusive: bool = false, end_inclusive: bool = true) -> Array[Vector3i]:
 	var start_id := _grid3d_to_id(start)
 	var end_id := _grid3d_to_id(end)
 	if !nav.has_point(start_id) or !nav.has_point(end_id):

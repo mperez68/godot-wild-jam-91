@@ -6,11 +6,19 @@ class_name PlayerController extends Controller
 @onready var beer_button: ActionButton = %BeerButton
 @onready var swipe_button: ActionButton = %SwipeButton
 
+var adjacent_beers: Array[BeerBarrel]
+var adjacent_trinkets: Array[Trinket]
+
 
 # ENGINE
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and !ready_queue.is_empty():
-		_end_turn()
+	if ready_queue.is_empty() or locked_characters > 0:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		var map: Map = TacGrid.get_map()
+		var target_grid: Vector3i = map.local_to_grid3d(get_viewport().get_camera_2d().get_global_mouse_position(), true)
+		if !map.is_in_fog(target_grid) and ready_queue.front().move_to(target_grid):
+			TacGrid.get_map().clear_highlights()
 
 
 # PUBLIC
@@ -18,11 +26,63 @@ func _input(event: InputEvent) -> void:
 
 # PRIVATE
 func _update():
+	action_box.visible = locked_characters == 0
+	if locked_characters > 0:
+		return
+	var map: Map = TacGrid.get_map()
 	if ready_queue.is_empty():
+		map.clear_highlights()
 		_end_turn()
 		return
+	# Check actions left
+	if ready_queue.front().actions <= 0:
+		_pop_ready()
+		_update()
+		return
+	# UI
 	cycle_left_button.disabled = ready_queue.size() == 1
 	cycle_right_button.disabled = ready_queue.size() == 1
+	beer_button.disabled = true
+	swipe_button.disabled = true
+	adjacent_beers.clear()
+	adjacent_trinkets.clear()
+	for entity in get_tree().get_nodes_in_group(GridNode2D.ENTITY_KEY):
+		if ready_queue.front().can_see_target(entity, 1):
+			if entity is BeerBarrel and !entity.expended:
+				adjacent_beers.push_back(entity)
+				beer_button.disabled = false
+			elif entity is Trinket and !entity.stolen:
+				adjacent_trinkets.push_back(entity)
+				swipe_button.disabled = false
+	# Highlights
+	var front: Character = ready_queue.front()
+	var scan_start = Vector2i(
+		max(
+			map.used_rect.position.x,
+			front.grid_position.x - front.speed
+		),
+		max(
+			map.used_rect.position.y,
+			front.grid_position.y - front.speed
+		)
+	)
+	var scan_end = Vector2i(
+		min(
+			map.used_rect.position.x + map.used_rect.size.x,
+			front.grid_position.x + front.speed
+		),
+		min(
+			map.used_rect.position.y + map.used_rect.size.y,
+			front.grid_position.y + front.speed
+		)
+	)
+	var highlight_tiles: Array[Vector2i]
+	for x in range(scan_start.x, scan_end.x + 1):
+		for y in range(scan_start.y, scan_end.y + 1):
+			var temp: Vector3i = map.grid2d_to_grid3d(Vector2i(x, y), true)
+			if front.can_travel(temp):
+				highlight_tiles.push_back(Vector2i(x, y))
+	map.draw_highlight(Map.Highlight.MOVE_HIGHLIGHT, highlight_tiles)
 	jump_to_active()
 
 
@@ -46,5 +106,25 @@ func _on_cycle_button_pressed(next: bool) -> void:
 	_update()
 
 func _on_pass_button_pressed() -> void:
-	ready_queue.pop_front()
+	_pop_ready()
+	_update()
+
+func _on_beer_button_pressed() -> void:
+	if adjacent_beers.is_empty():
+		printerr("No beers adjacent! Why is this button pressable?")
+		return
+	for beer in adjacent_beers:
+		beer.expended = true
+		ready_queue.front().beers_stolen += 1
+	ready_queue.front().actions -= 1
+	_update()
+
+func _on_swipe_button_pressed() -> void:
+	if adjacent_trinkets.is_empty():
+		printerr("No trinkets adjacent! Why is this button pressable?")
+		return
+	for trinket in adjacent_trinkets:
+		trinket.steal()
+		ready_queue.front().trinkets_stolen += 1
+	ready_queue.front().actions -= 1
 	_update()

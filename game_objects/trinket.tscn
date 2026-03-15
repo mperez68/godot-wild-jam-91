@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_g0js1"]
 [ext_resource type="Texture2D" uid="uid://cwa0xibctvj7w" path="res://assets/sprites/trinket.png" id="2_cgit2"]
+[ext_resource type="Script" uid="uid://cma1ht5edonhu" path="res://game_objects/scripts/trinket.gd" id="2_xy8eu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xy8eu"]
 atlas = ExtResource("2_cgit2")
@@ -31,8 +32,11 @@ animations = [{
 }]
 
 [node name="Trinket" unique_id=1426874908 instance=ExtResource("1_g0js1")]
+script = ExtResource("2_xy8eu")
+stolen = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=329819877]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_tlgmj")
 animation = &"idle"
 autoplay = "idle"

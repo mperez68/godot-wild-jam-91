@@ -1,8 +1,11 @@
 @tool
 class_name Character extends GridNode2D
 
+signal lock_changed(new_state: bool)
+
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var arrow_sprite: Sprite2D = %ArrowSprite
+@onready var move_timer: Timer = %MoveTimer
 
 @export_placeholder("Character Name") var display_name: String = "":
 	set(value):
@@ -12,6 +15,22 @@ class_name Character extends GridNode2D
 	set(value):
 		sub_name = value
 		_update_tooltip()
+@export_range(0.0, 6.0, 1.0, "or_greater") var speed: int = 5
+@export_range(0.0, 3.0, 1.0) var action_limit: int = 2
+
+var actions: int = 0
+var movement_queue: Array[Vector3i]:
+	set(value):
+		movement_queue = value
+		if !movement_queue.is_empty():
+			move_timer.start()
+			locked = true
+var locked: bool = false:
+	set(value):
+		if locked == value:
+			return
+		locked = value
+		lock_changed.emit(locked)
 
 
 # ENGINE
@@ -22,10 +41,22 @@ func _ready():
 
 # PUBLIC
 func start_turn():
+	actions = action_limit
 	print("%s starts turn" % display_name)
 
 func end_turn():
+	actions = 0
 	print("%s ends turn" % display_name)
+
+func can_travel(target: Vector3i) -> bool:
+	return TacGrid.get_map().is_navigable(grid_position, target, speed)
+
+func move_to(target: Vector3i) -> bool:
+	if !can_travel(target) or actions <= 0:
+		return false
+	movement_queue = TacGrid.get_map().get_route(grid_position, target)
+	actions -= 1
+	return true
 
 
 # PRIVATE
@@ -45,3 +76,10 @@ func _update_face():
 # SIGNALS
 func _on_moved(_start: Vector3i) -> void:
 	TacGrid.get_map().update_fog()
+
+func _on_move_timer_timeout() -> void:
+	if movement_queue.is_empty():
+		move_timer.stop()
+		locked = false
+		return
+	face_and_move(movement_queue.pop_front())
