@@ -2,22 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://dkun63pwov4kt" path="res://ui/action_button.tscn" id="1_ks8t7"]
 [ext_resource type="Script" uid="uid://b0ovacu6h1h8c" path="res://ui/scripts/player_controller.gd" id="1_wl5ax"]
+[ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="2_vkava"]
 [ext_resource type="Texture2D" uid="uid://djryp616dm7mx" path="res://assets/menu_sprites/button_icons.png" id="2_wl5ax"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vkava"]
-resource_local_to_scene = true
-atlas = ExtResource("2_wl5ax")
-region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tf0e0"]
 resource_local_to_scene = true
 atlas = ExtResource("2_wl5ax")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obcwv"]
 resource_local_to_scene = true
 atlas = ExtResource("2_wl5ax")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo1jx"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gycre"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa1oa"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
+region = Rect2(0, 32, 16, 16)
 
 [node name="UI" type="Control" unique_id=72666876]
 layout_mode = 3
@@ -44,7 +55,14 @@ theme_override_constants/margin_bottom = 8
 [node name="Control" type="Control" parent="MarginContainer" unique_id=2056232156]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control" unique_id=356655440]
+[node name="QuitButton" parent="MarginContainer/Control" unique_id=1765862555 instance=ExtResource("2_vkava")]
+layout_mode = 0
+offset_right = 33.0
+text = "Back"
+back = true
+
+[node name="ActionBox" type="HBoxContainer" parent="MarginContainer/Control" unique_id=356655440]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -54,21 +72,40 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="BeerButton" parent="MarginContainer/Control/HBoxContainer" unique_id=1285023305 instance=ExtResource("1_ks8t7")]
+[node name="CycleLeftButton" parent="MarginContainer/Control/ActionBox" unique_id=215720530 instance=ExtResource("1_ks8t7")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Left"
+icon = SubResource("AtlasTexture_tf0e0")
+icon_type = 4
+
+[node name="BeerButton" parent="MarginContainer/Control/ActionBox" unique_id=1285023305 instance=ExtResource("1_ks8t7")]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Steal Beer"
 disabled = true
-icon = SubResource("AtlasTexture_vkava")
+icon = SubResource("AtlasTexture_obcwv")
 icon_type = 1
 
-[node name="SwipeButton" parent="MarginContainer/Control/HBoxContainer" unique_id=661159668 instance=ExtResource("1_ks8t7")]
+[node name="SwipeButton" parent="MarginContainer/Control/ActionBox" unique_id=661159668 instance=ExtResource("1_ks8t7")]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Swipe"
 disabled = true
-icon = SubResource("AtlasTexture_tf0e0")
+icon = SubResource("AtlasTexture_bo1jx")
 icon_type = 2
 
-[node name="PassButton" parent="MarginContainer/Control/HBoxContainer" unique_id=215720530 instance=ExtResource("1_ks8t7")]
+[node name="PassButton" parent="MarginContainer/Control/ActionBox" unique_id=1395879263 instance=ExtResource("1_ks8t7")]
 layout_mode = 2
-tooltip_text = "Pass"
-icon = SubResource("AtlasTexture_obcwv")
+icon = SubResource("AtlasTexture_gycre")
+
+[node name="CycleRightButton" parent="MarginContainer/Control/ActionBox" unique_id=1243534024 instance=ExtResource("1_ks8t7")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Right"
+icon = SubResource("AtlasTexture_pa1oa")
+icon_type = 3
+
+[connection signal="pressed" from="MarginContainer/Control/ActionBox/CycleLeftButton" to="." method="_on_cycle_button_pressed" binds= [false]]
+[connection signal="pressed" from="MarginContainer/Control/ActionBox/PassButton" to="." method="_on_pass_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/ActionBox/CycleRightButton" to="." method="_on_cycle_button_pressed" binds= [true]]

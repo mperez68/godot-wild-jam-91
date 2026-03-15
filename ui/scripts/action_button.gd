@@ -1,11 +1,15 @@
 @tool
 class_name ActionButton extends SfxButton
 
-enum Icon{ PASS, STEAL_BEER, SWIPE }
+enum Icon{ PASS, STEAL_BEER, SWIPE, RIGHT, LEFT, UP, DOWN }
 var icon_map: Dictionary[Icon, Vector2] = {
 	Icon.PASS: Vector2.ZERO,
 	Icon.STEAL_BEER: Vector2(16.0, 0.0),
-	Icon.SWIPE: Vector2(32.0, 0.0)
+	Icon.SWIPE: Vector2(32.0, 0.0),
+	Icon.RIGHT: Vector2(0.0, 32.0),
+	Icon.LEFT: Vector2(16.0, 32.0),
+	Icon.UP: Vector2(32.0, 32.0),
+	Icon.DOWN: Vector2(48.0, 32.0)
 }
 
 @export var icon_type: Icon = Icon.PASS:

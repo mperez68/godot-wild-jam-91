@@ -20,6 +20,10 @@ script = ExtResource("1_vqqx4")
 script = ExtResource("12_u1ocn")
 group_key = &"computer"
 
+[node name="PauseTimer" type="Timer" parent="ComputerController" unique_id=987475861]
+unique_name_in_owner = true
+one_shot = true
+
 [node name="BoundCamera" parent="." unique_id=1760976908 instance=ExtResource("2_grtf1")]
 unique_name_in_owner = true
 position = Vector2(190, 240)
@@ -88,5 +92,8 @@ facing = 2
 [connection signal="turn_changed" from="." to="." method="_on_turn_changed"]
 [connection signal="turn_changed" from="." to="ComputerController" method="_on_heist_turn_changed"]
 [connection signal="turn_changed" from="." to="UILayer/UI" method="_on_heist_turn_changed"]
+[connection signal="end_turn" from="ComputerController" to="." method="pass_turn"]
 [connection signal="request_camera_position" from="ComputerController" to="." method="_on_request_camera_position"]
+[connection signal="timeout" from="ComputerController/PauseTimer" to="ComputerController" method="_on_pause_timer_timeout"]
+[connection signal="end_turn" from="UILayer/UI" to="." method="pass_turn"]
 [connection signal="request_camera_position" from="UILayer/UI" to="." method="_on_request_camera_position"]

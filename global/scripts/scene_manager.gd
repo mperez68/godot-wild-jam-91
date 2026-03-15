@@ -27,6 +27,7 @@ func new_scene(scene: PackedScene, transition: bool = true, add_to_backstack: bo
 func back():
 	if back_stack.is_empty():
 		printerr("Back stack is empty!")
+		get_tree().change_scene_to_file("res://main_scenes/menus/splash.tscn")
 	else:
 		new_scene(back_stack.pop_back())
 

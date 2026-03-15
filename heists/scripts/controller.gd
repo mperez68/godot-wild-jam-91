@@ -30,6 +30,7 @@ func _start_turn():
 		if node is Character:
 			node.start_turn()
 			ready_queue.push_back(node)
+	jump_to_active()
 	_update()
 
 func _end_turn():
