@@ -15,5 +15,6 @@ tooltip_text = "Pass"
 focus_mode = 0
 text = ""
 icon = SubResource("AtlasTexture_q7t3h")
+icon_alignment = 1
 script = ExtResource("3_q7t3h")
 icon_type = 0

@@ -5,6 +5,7 @@
 
 [node name="Orc" unique_id=1426874908 groups=["computer"] instance=ExtResource("1_bkovl")]
 display_name = "Orc"
+speed = 3
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
 sprite_frames = ExtResource("2_gtmjs")

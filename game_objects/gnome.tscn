@@ -6,8 +6,7 @@
 
 [node name="Gnome" unique_id=1426874908 groups=["player"] instance=ExtResource("1_sqdci")]
 script = ExtResource("2_hbmc6")
-beers_stolen = 0
-trinkets_stolen = 0
+role = 0
 speed = 5
 grid_position = Vector3i(0, 0, 0)
 view_range = 6.0

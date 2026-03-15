@@ -5,13 +5,14 @@ class_name PlayerController extends Controller
 @onready var cycle_right_button: ActionButton = %CycleRightButton
 @onready var beer_button: ActionButton = %BeerButton
 @onready var swipe_button: ActionButton = %SwipeButton
+@onready var special_button: ActionButton = %SpecialButton
 
 var adjacent_beers: Array[BeerBarrel]
 var adjacent_trinkets: Array[Trinket]
 
 
 # ENGINE
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if ready_queue.is_empty() or locked_characters > 0:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -40,6 +41,16 @@ func _update():
 		_update()
 		return
 	# UI
+	special_button.disabled = ready_queue.front().role == Gnome.Role.MOOK
+	match ready_queue.front().role:
+		Gnome.Role.SNEAK:
+			special_button.icon_type = ActionButton.Icon.TELEPORT
+		Gnome.Role.SPOTTER:
+			special_button.icon_type = ActionButton.Icon.WARD
+		Gnome.Role.DUSTER:
+			special_button.icon_type = ActionButton.Icon.DUST
+		_:
+			special_button.icon_type = ActionButton.Icon.NONE
 	cycle_left_button.disabled = ready_queue.size() == 1
 	cycle_right_button.disabled = ready_queue.size() == 1
 	beer_button.disabled = true
@@ -127,4 +138,9 @@ func _on_swipe_button_pressed() -> void:
 		trinket.steal()
 		ready_queue.front().trinkets_stolen += 1
 	ready_queue.front().actions -= 1
+	_update()
+
+func _on_special_button_pressed() -> void:
+	if ready_queue.front().cast_special():
+		TacGrid.get_map().clear_highlights()
 	_update()

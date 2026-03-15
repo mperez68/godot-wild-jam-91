@@ -28,6 +28,11 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gycre"]
 resource_local_to_scene = true
 atlas = ExtResource("2_wl5ax")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa1oa"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
 region = Rect2(0, 32, 16, 16)
 
 [node name="UI" type="Control" unique_id=72666876]
@@ -103,15 +108,24 @@ icon_type = 2
 layout_mode = 2
 icon = SubResource("AtlasTexture_bo1jx")
 
+[node name="SpecialButton" parent="MarginContainer/Control/ActionBox" unique_id=144734733 instance=ExtResource("1_ks8t7")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "None"
+disabled = true
+icon = SubResource("AtlasTexture_gycre")
+icon_type = 10
+
 [node name="CycleRightButton" parent="MarginContainer/Control/ActionBox" unique_id=1243534024 instance=ExtResource("1_ks8t7")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Right"
-icon = SubResource("AtlasTexture_gycre")
+icon = SubResource("AtlasTexture_pa1oa")
 icon_type = 3
 
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/CycleLeftButton" to="." method="_on_cycle_button_pressed" binds= [false]]
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/BeerButton" to="." method="_on_beer_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/SwipeButton" to="." method="_on_swipe_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/PassButton" to="." method="_on_pass_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/ActionBox/SpecialButton" to="." method="_on_special_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/CycleRightButton" to="." method="_on_cycle_button_pressed" binds= [true]]

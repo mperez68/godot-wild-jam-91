@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://nm63odoq5xrf" path="res://ui/ui.tscn" id="3_ple83"]
 [ext_resource type="PackedScene" uid="uid://dxeu1hfikn2lk" path="res://game_objects/gnome.tscn" id="5_beklk"]
 [ext_resource type="PackedScene" uid="uid://cw7i8thygrl3k" path="res://game_objects/orc.tscn" id="6_bo0he"]
-[ext_resource type="PackedScene" uid="uid://34q0v28m5pqo" path="res://game_objects/ward.tscn" id="7_7fo53"]
 [ext_resource type="PackedScene" uid="uid://cyppvgh5vueoc" path="res://game_objects/trinket.tscn" id="8_htt2q"]
 [ext_resource type="PackedScene" uid="uid://84jm12av6xbg" path="res://game_objects/beer_barrel.tscn" id="9_ple83"]
 [ext_resource type="PackedScene" uid="uid://cyfd11xknv4wq" path="res://game_objects/boar.tscn" id="10_htt2q"]
@@ -47,34 +46,46 @@ tile_set = ExtResource("2_vqqx4")
 
 [node name="Orc" parent="." unique_id=1686753167 instance=ExtResource("6_bo0he")]
 position = Vector2(296, 200)
-speed = 5
 grid_position = Vector3i(18, 12, 1)
 
 [node name="Gnome" parent="." unique_id=1426874908 instance=ExtResource("5_beklk")]
-position = Vector2(88, 200)
+position = Vector2(168, 296)
+role = 1
+display_name = "Gnomeo"
 sub_name = "Sneak"
-grid_position = Vector3i(5, 12, 1)
+grid_position = Vector3i(10, 18, 1)
 facing = 2
 
 [node name="Gnome2" parent="." unique_id=1392401513 instance=ExtResource("5_beklk")]
 position = Vector2(216, 296)
+role = 2
 display_name = "Juliet"
-sub_name = "Trickster"
+sub_name = "Spotter"
 grid_position = Vector3i(13, 18, 1)
 facing = 1
 
-[node name="Ward" parent="." unique_id=333909446 instance=ExtResource("7_7fo53")]
-position = Vector2(280, 184)
-grid_position = Vector3i(17, 11, 0)
+[node name="Gnome3" parent="." unique_id=1795396495 instance=ExtResource("5_beklk")]
+position = Vector2(200, 328)
+role = 3
+display_name = "Steve"
+sub_name = "Duster"
+grid_position = Vector3i(12, 20, 1)
+facing = 1
+
+[node name="Gnome4" parent="." unique_id=1482478503 instance=ExtResource("5_beklk")]
+position = Vector2(152, 328)
+display_name = "Will"
+sub_name = "Mook"
+grid_position = Vector3i(9, 20, 1)
+facing = 1
 
 [node name="Trinket" parent="." unique_id=219872396 instance=ExtResource("8_htt2q")]
 z_index = 1
-position = Vector2(104, 216)
-grid_position = Vector3i(6, 13, 1)
+position = Vector2(72, 184)
+grid_position = Vector3i(4, 11, 1)
 
 [node name="Boar" parent="." unique_id=2019170569 instance=ExtResource("10_htt2q")]
 position = Vector2(168, 184)
-speed = 5
 grid_position = Vector3i(10, 11, 1)
 facing = 2
 
