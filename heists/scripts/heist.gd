@@ -5,6 +5,8 @@ signal turn_changed(new_turn: Turn)
 enum Turn{ NONE, PLAYER, COMPUTER }
 
 @onready var map: Map = %Map
+@onready var camera: BoundCamera = %BoundCamera
+
 
 @export var turn: Turn = Turn.NONE:
 	set(value):
@@ -16,6 +18,10 @@ enum Turn{ NONE, PLAYER, COMPUTER }
 
 # ENGINE
 func _ready() -> void:
+	var limits: Rect2 = Rect2(map.used_rect)
+	limits.position *= TacGrid.grid_size
+	limits.size *= TacGrid.grid_size
+	camera.set_limits(limits)
 	start_game()
 
 func _input(event: InputEvent) -> void:
@@ -44,3 +50,9 @@ func end_game():
 
 
 # SIGNALS
+func _on_request_camera_position(pos: Vector2) -> void:
+	camera.position = pos
+
+func _on_turn_changed(new_turn: Heist.Turn) -> void:
+	camera.locked = new_turn != Turn.PLAYER
+		

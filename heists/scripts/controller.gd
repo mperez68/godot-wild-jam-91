@@ -2,6 +2,7 @@
 class_name Controller extends Node
 
 signal end_turn
+signal request_camera_position(pos: Vector2)
 
 @export var group_key: StringName
 
@@ -15,6 +16,11 @@ var ready_queue: Array[Character]
 
 
 # PRIVATE
+func jump_to_active():
+	if ready_queue.is_empty():
+		return
+	request_camera_position.emit(ready_queue.front().position)
+
 @abstract
 ## Needs to move turn forward every time it is called. Check for dead ends that do not progress turn.
 func _update()

@@ -9,7 +9,7 @@ class_name PlayerController extends Controller
 
 # PRIVATE
 func _update():
-	pass
+	jump_to_active()
 
 
 # SIGNALS

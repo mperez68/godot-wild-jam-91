@@ -49,8 +49,6 @@ func set_limits(boundaries: Rect2):
 
 
 # SIGNALS
-
-
 func _on_start_timer_timeout() -> void:
 	locked = focus_target != null
 
