@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cyppvgh5vueoc"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_g0js1"]
+[ext_resource type="Texture2D" uid="uid://cwa0xibctvj7w" path="res://assets/sprites/trinket.png" id="2_cgit2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy8eu"]
+atlas = ExtResource("2_cgit2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2lcr"]
+atlas = ExtResource("2_cgit2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlgmj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy8eu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2lcr")
+}],
+"loop": true,
+"name": &"missing",
+"speed": 5.0
+}]
+
+[node name="Trinket" unique_id=1426874908 instance=ExtResource("1_g0js1")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=329819877]
+sprite_frames = SubResource("SpriteFrames_tlgmj")
+animation = &"idle"
+autoplay = "idle"

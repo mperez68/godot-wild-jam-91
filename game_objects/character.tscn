@@ -22,6 +22,7 @@ unique_name_in_owner = true
 texture = ExtResource("3_ylqgr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_a73ab")
 sprite_frames = ExtResource("3_i0pnu")
 animation = &"idle"

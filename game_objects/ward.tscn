@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://34q0v28m5pqo"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_5lrcd"]
+[ext_resource type="Texture2D" uid="uid://bfgadk4f5j2kc" path="res://assets/sprites/ward.png" id="2_4xe1u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lrcd"]
+atlas = ExtResource("2_4xe1u")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xe1u"]
+atlas = ExtResource("2_4xe1u")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_853tr"]
+atlas = ExtResource("2_4xe1u")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6xpa"]
+atlas = ExtResource("2_4xe1u")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elaw6"]
+atlas = ExtResource("2_4xe1u")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m62ye"]
+atlas = ExtResource("2_4xe1u")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnsol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lrcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xe1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_853tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6xpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elaw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m62ye")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Ward" unique_id=1426874908 instance=ExtResource("1_5lrcd")]
+view_range = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1816527856]
+sprite_frames = SubResource("SpriteFrames_tnsol")
+autoplay = "default"
+frame_progress = 0.14873533

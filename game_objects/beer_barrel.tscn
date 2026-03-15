@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://84jm12av6xbg"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_wwopl"]
+[ext_resource type="Texture2D" uid="uid://dm4rieshwu63h" path="res://assets/sprites/beer_barrels.png" id="2_1u04a"]
+[ext_resource type="Script" uid="uid://bymwo1clj5log" path="res://game_objects/scripts/beer_barrel.gd" id="2_gjp5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjp5c"]
+atlas = ExtResource("2_1u04a")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v71wx"]
+atlas = ExtResource("2_1u04a")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5i6dy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjp5c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v71wx")
+}],
+"loop": true,
+"name": &"sabotaged",
+"speed": 5.0
+}]
+
+[node name="BeerBarrel" unique_id=1426874908 instance=ExtResource("1_wwopl")]
+script = ExtResource("2_gjp5c")
+expended = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1073610612]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_5i6dy")
+autoplay = "default"

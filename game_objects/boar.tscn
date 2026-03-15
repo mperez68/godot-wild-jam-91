@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cyfd11xknv4wq"]
+
+[ext_resource type="PackedScene" uid="uid://c5guvhsa4pyvq" path="res://game_objects/character.tscn" id="1_amj5r"]
+[ext_resource type="Texture2D" uid="uid://bf3p1dbp4137m" path="res://assets/sprites/boar.png" id="2_aurn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aurn3"]
+atlas = ExtResource("2_aurn3")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ry5f"]
+atlas = ExtResource("2_aurn3")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml4j8"]
+atlas = ExtResource("2_aurn3")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfjc5"]
+atlas = ExtResource("2_aurn3")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ry5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aurn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ry5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml4j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfjc5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[node name="Boar" unique_id=1426874908 instance=ExtResource("1_amj5r")]
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
+sprite_frames = SubResource("SpriteFrames_3ry5f")
+frame_progress = 0.82914454
