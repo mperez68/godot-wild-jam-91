@@ -3,7 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c5guvhsa4pyvq" path="res://game_objects/character.tscn" id="1_sqdci"]
 [ext_resource type="SpriteFrames" uid="uid://djrrmvpq8i6fa" path="res://resources/sprite_frames/gnome_sprite_frames.tres" id="2_gq6xs"]
 
-[node name="Gnome" unique_id=1426874908 instance=ExtResource("1_sqdci")]
+[node name="Gnome" unique_id=1426874908 groups=["player"] instance=ExtResource("1_sqdci")]
+display_name = "Gnomeo"
 view_range = 6.0
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]

@@ -46,6 +46,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="HeaderPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=1001753000]
+visible = false
 layout_mode = 2
 
 [node name="HeaderLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/HeaderPanel" unique_id=389356143]

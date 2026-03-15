@@ -59,4 +59,4 @@ view_range = 3.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1816527856]
 sprite_frames = SubResource("SpriteFrames_tnsol")
 autoplay = "default"
-frame_progress = 0.14873533
+frame_progress = 0.50131536

@@ -15,6 +15,8 @@ shader_parameter/texture_region = Vector4(0, 0, 0, 0)
 [node name="Character" unique_id=1426874908 instance=ExtResource("1_e6rti")]
 z_index = 1
 script = ExtResource("2_i0pnu")
+display_name = ""
+sub_name = ""
 grid_position = Vector3i(0, 0, 1)
 
 [node name="ArrowSprite" type="Sprite2D" parent="." index="0" unique_id=1805557467]

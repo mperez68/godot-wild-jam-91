@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dkun63pwov4kt"]
+
+[ext_resource type="PackedScene" uid="uid://dynic8aip3myr" path="res://ui/sfx_button.tscn" id="1_qbsgc"]
+[ext_resource type="Texture2D" uid="uid://djryp616dm7mx" path="res://assets/menu_sprites/button_icons.png" id="2_eb04t"]
+[ext_resource type="Script" uid="uid://dbofnht80c73n" path="res://ui/scripts/action_button.gd" id="3_q7t3h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7t3h"]
+resource_local_to_scene = true
+atlas = ExtResource("2_eb04t")
+region = Rect2(0, 0, 16, 16)
+
+[node name="ActionButton" unique_id=215720530 instance=ExtResource("1_qbsgc")]
+custom_minimum_size = Vector2(16, 16)
+text = ""
+icon = SubResource("AtlasTexture_q7t3h")
+script = ExtResource("3_q7t3h")
+icon_type = 0

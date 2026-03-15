@@ -46,6 +46,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="HeaderPanel" type="PanelContainer" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer" unique_id=1458201375]
+visible = false
 layout_mode = 2
 
 [node name="HeaderLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/HeaderPanel" unique_id=1288688810]
@@ -63,17 +64,13 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/OptionsContainer" unique_id=1148993353]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]
-Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])
-
+text = "[center]Made by Marc Perez ([url=https://linktr.ee/GEIST_COMM]GEIST_COMM_GAMES[/url])
 Tools Used:
 Ableton Live
 Massive Sound Library
 EastWest Sound Library
 Aseprite
-Tilesetter
-
-[/center]"
+Tilesetter[/center]"
 fit_content = true
 
 [node name="GodotVersionLabel" type="Label" parent="MarginContainer/InnerMarginsContainer/CenterContainer/VBoxContainer/CreditsPanel/OptionsContainer" unique_id=1581874423]

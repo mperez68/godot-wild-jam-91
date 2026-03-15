@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://nm63odoq5xrf"]
+
+[ext_resource type="PackedScene" uid="uid://dkun63pwov4kt" path="res://ui/action_button.tscn" id="1_ks8t7"]
+[ext_resource type="Script" uid="uid://b0ovacu6h1h8c" path="res://ui/scripts/player_controller.gd" id="1_wl5ax"]
+[ext_resource type="Texture2D" uid="uid://djryp616dm7mx" path="res://assets/menu_sprites/button_icons.png" id="2_wl5ax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkava"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf0e0"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obcwv"]
+resource_local_to_scene = true
+atlas = ExtResource("2_wl5ax")
+region = Rect2(0, 0, 16, 16)
+
+[node name="UI" type="Control" unique_id=72666876]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wl5ax")
+group_key = &"player"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2063164248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=2056232156]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control" unique_id=356655440]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="BeerButton" parent="MarginContainer/Control/HBoxContainer" unique_id=1285023305 instance=ExtResource("1_ks8t7")]
+layout_mode = 2
+tooltip_text = "Steal Beer"
+disabled = true
+icon = SubResource("AtlasTexture_vkava")
+icon_type = 1
+
+[node name="SwipeButton" parent="MarginContainer/Control/HBoxContainer" unique_id=661159668 instance=ExtResource("1_ks8t7")]
+layout_mode = 2
+tooltip_text = "Swipe"
+disabled = true
+icon = SubResource("AtlasTexture_tf0e0")
+icon_type = 2
+
+[node name="PassButton" parent="MarginContainer/Control/HBoxContainer" unique_id=215720530 instance=ExtResource("1_ks8t7")]
+layout_mode = 2
+tooltip_text = "Pass"
+icon = SubResource("AtlasTexture_obcwv")

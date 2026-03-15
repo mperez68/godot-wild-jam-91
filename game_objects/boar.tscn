@@ -39,7 +39,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Boar" unique_id=1426874908 instance=ExtResource("1_amj5r")]
+[node name="Boar" unique_id=1426874908 groups=["computer"] instance=ExtResource("1_amj5r")]
+display_name = "Boar"
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
 sprite_frames = SubResource("SpriteFrames_3ry5f")
