@@ -390,10 +390,6 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAKABUAAAAAAAIAAAALABUAAAABAAIAAAAMABUAAAABAAIAAAANABUAAAACAAIAAAANABQAAAACAAAAAAAMABQAAAABAAAAAAALABQAAAABAAAAAAAKABQAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ijmkk")
 
-[node name="Orc" parent="." unique_id=1686753167 instance=ExtResource("6_bo0he")]
-position = Vector2(296, 200)
-grid_position = Vector3i(18, 12, 1)
-
 [node name="Gnome" parent="." unique_id=1426874908 instance=ExtResource("5_beklk")]
 position = Vector2(184, 344)
 role = 1
@@ -424,14 +420,23 @@ position = Vector2(72, 184)
 grid_position = Vector3i(4, 11, 1)
 
 [node name="Boar" parent="." unique_id=2019170569 instance=ExtResource("10_htt2q")]
-position = Vector2(168, 184)
-grid_position = Vector3i(10, 11, 1)
+position = Vector2(152, 184)
+grid_position = Vector3i(9, 11, 1)
 facing = 2
 
 [node name="BeerBarrel" parent="." unique_id=1029478382 instance=ExtResource("9_ple83")]
 z_index = 1
 position = Vector2(216, 264)
 grid_position = Vector3i(13, 16, 1)
+
+[node name="Orc" parent="." unique_id=296339177 instance=ExtResource("6_bo0he")]
+position = Vector2(88, 312)
+grid_position = Vector3i(5, 19, 1)
+
+[node name="Orc2" parent="." unique_id=523258181 instance=ExtResource("6_bo0he")]
+position = Vector2(264, 344)
+grid_position = Vector3i(16, 21, 1)
+facing = 3
 
 [connection signal="turn_changed" from="." to="." method="_on_turn_changed"]
 [connection signal="turn_changed" from="." to="ComputerController" method="_on_heist_turn_changed"]

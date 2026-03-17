@@ -13,8 +13,6 @@ enum Turn{ NONE, PLAYER, COMPUTER }
 
 var beers: int = 0
 var trinkets: int = 0
-
-
 var turn: Turn = Turn.NONE:
 	set(value):
 		if turn == value:
@@ -60,7 +58,8 @@ func end_game():
 
 # SIGNALS
 func _on_request_camera_position(pos: Vector2) -> void:
-	camera.position = pos
+	if !map.is_in_fog(map.local_to_grid3d(pos, true)):
+		camera.position = pos
 
 func _on_turn_changed(new_turn: Heist.Turn) -> void:
 	camera.locked = new_turn != Turn.PLAYER

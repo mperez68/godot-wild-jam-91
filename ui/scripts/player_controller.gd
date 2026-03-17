@@ -3,6 +3,7 @@ class_name PlayerController extends Controller
 signal extract(beers: int, trinkets: int)
 
 @onready var ui_container: Control = %Control
+@onready var comp_turn_text: MarginContainer = %CompTurnText
 @onready var cycle_left_button: ActionButton = %CycleLeftButton
 @onready var cycle_right_button: ActionButton = %CycleRightButton
 @onready var beer_button: ActionButton = %BeerButton
@@ -111,6 +112,7 @@ func _update():
 # SIGNALS
 func _on_heist_turn_changed(new_turn: Heist.Turn) -> void:
 	ui_container.visible = new_turn == Heist.Turn.PLAYER
+	comp_turn_text.visible = new_turn == Heist.Turn.COMPUTER
 	if new_turn != Heist.Turn.PLAYER:
 		_turn_ended()
 		return

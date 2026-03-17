@@ -83,6 +83,9 @@ func _update_face():
 # SIGNALS
 func _on_moved(_start: Vector3i) -> void:
 	TacGrid.get_map().update_fog()
+	for entity in get_tree().get_nodes_in_group("computer"):
+		if entity is Watcher:
+			entity.scan_targets()
 
 func _on_move_timer_timeout() -> void:
 	if movement_queue.is_empty():

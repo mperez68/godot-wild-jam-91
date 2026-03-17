@@ -13,7 +13,8 @@ const INTERVENING_DEPTH: int = 2	# 0 is starting position, 1 is adjacent tiles, 
 @export_range(-1.0, 5.0, 0.1, "or_greater") var climb_weight: float = -1
 @export var use_fog: bool = true
 
-@onready var util_layers: Array[TileMapLayer] = [%FogOfWar, %HighlightLayer, %TargetLayer, %HoverLayer  ]
+@onready var util_layers: Array[TileMapLayer] = [%FogOfWar, %HighlightLayer, %TargetLayer, %HoverLayer,%VisLayer ]
+@onready var vis_layer: TileMapLayer = %VisLayer
 @onready var fog_of_war: TileMapLayer = %FogOfWar
 @onready var target_layer: TileMapLayer = %TargetLayer
 @onready var highlight_layer: TileMapLayer = %HighlightLayer
@@ -250,6 +251,12 @@ func draw_highlight(highlight: Highlight, first_area: Array[Vector2i], second_ar
 	layer.set_cells_terrain_connect(first_area, 0, texture)
 	layer.set_cells_terrain_connect(second_area, 1, texture)
 	layer.set_cells_terrain_connect(third_area, 2, texture)
+
+func clear_vis_tiles():
+	vis_layer.clear()
+
+func draw_vis_tiles(area: Array[Vector2i] = []):
+	vis_layer.set_cells_terrain_connect(area, 0, 0)
 
 
 # PRIVATE

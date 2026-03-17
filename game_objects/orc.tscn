@@ -2,8 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://c5guvhsa4pyvq" path="res://game_objects/character.tscn" id="1_bkovl"]
 [ext_resource type="SpriteFrames" uid="uid://diln7n0kthfvr" path="res://resources/sprite_frames/orc_sprite_frames.tres" id="2_gtmjs"]
+[ext_resource type="Script" uid="uid://da665kv3dqd8f" path="res://game_objects/scripts/watcher.gd" id="2_ilgkb"]
 
 [node name="Orc" unique_id=1426874908 groups=["computer"] instance=ExtResource("1_bkovl")]
+script = ExtResource("2_ilgkb")
+vis_range = 4.0
 display_name = "Orc"
 speed = 3
 

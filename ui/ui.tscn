@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b0ovacu6h1h8c" path="res://ui/scripts/player_controller.gd" id="1_wl5ax"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="2_vkava"]
 [ext_resource type="Texture2D" uid="uid://djryp616dm7mx" path="res://assets/menu_sprites/button_icons.png" id="2_wl5ax"]
+[ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="5_tf0e0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkava"]
 resource_local_to_scene = true
@@ -135,6 +136,17 @@ layout_mode = 2
 tooltip_text = "Right"
 icon = SubResource("AtlasTexture_ay4pc")
 icon_type = 3
+
+[node name="CompTurnText" type="MarginContainer" parent="MarginContainer" unique_id=732372439]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CompTurnText" unique_id=831539592]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Computer Turn..."
+label_settings = ExtResource("5_tf0e0")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/CycleLeftButton" to="." method="_on_cycle_button_pressed" binds= [false]]
 [connection signal="pressed" from="MarginContainer/Control/ActionBox/BeerButton" to="." method="_on_beer_button_pressed"]
