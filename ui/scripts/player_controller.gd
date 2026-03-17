@@ -1,25 +1,35 @@
 class_name PlayerController extends Controller
 
-@onready var action_box: HBoxContainer = %ActionBox
+signal extract(beers: int, trinkets: int)
+
+@onready var ui_container: Control = %Control
 @onready var cycle_left_button: ActionButton = %CycleLeftButton
 @onready var cycle_right_button: ActionButton = %CycleRightButton
 @onready var beer_button: ActionButton = %BeerButton
 @onready var swipe_button: ActionButton = %SwipeButton
 @onready var special_button: ActionButton = %SpecialButton
+@onready var extract_button: ActionButton = %ExtractButton
 
 var adjacent_beers: Array[BeerBarrel]
 var adjacent_trinkets: Array[Trinket]
+var dropzone: Array[Vector3i]
 
 
 # ENGINE
 func _unhandled_input(event: InputEvent) -> void:
 	if ready_queue.is_empty() or locked_characters > 0:
 		return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouse:
 		var map: Map = TacGrid.get_map()
 		var target_grid: Vector3i = map.local_to_grid3d(get_viewport().get_camera_2d().get_global_mouse_position(), true)
-		if !map.is_in_fog(target_grid) and ready_queue.front().move_to(target_grid):
-			TacGrid.get_map().clear_highlights()
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if !map.is_in_fog(target_grid) and ready_queue.front().move_to(target_grid):
+				map.clear_highlights()
+		elif event is InputEventMouseMotion:
+			if map.is_highlighted(target_grid):
+				map.draw_highlight(Map.Highlight.MOVE_HOVER, [Vector2i(target_grid.x, target_grid.y)])
+			else:
+				map.draw_highlight(Map.Highlight.MOVE_HOVER, [])
 
 
 # PUBLIC
@@ -27,7 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # PRIVATE
 func _update():
-	action_box.visible = locked_characters == 0
+	ui_container.visible = locked_characters == 0
 	if locked_characters > 0:
 		return
 	var map: Map = TacGrid.get_map()
@@ -41,6 +51,7 @@ func _update():
 		_update()
 		return
 	# UI
+	extract_button.disabled = !dropzone.has(ready_queue.front().grid_position)
 	special_button.disabled = ready_queue.front().role == Gnome.Role.MOOK
 	match ready_queue.front().role:
 		Gnome.Role.SNEAK:
@@ -99,7 +110,7 @@ func _update():
 
 # SIGNALS
 func _on_heist_turn_changed(new_turn: Heist.Turn) -> void:
-	action_box.visible = new_turn == Heist.Turn.PLAYER
+	ui_container.visible = new_turn == Heist.Turn.PLAYER
 	if new_turn != Heist.Turn.PLAYER:
 		_turn_ended()
 		return
@@ -143,4 +154,11 @@ func _on_swipe_button_pressed() -> void:
 func _on_special_button_pressed() -> void:
 	if ready_queue.front().cast_special():
 		TacGrid.get_map().clear_highlights()
+	_update()
+
+func _on_extract_button_pressed() -> void:
+	var extracted: Character = _pop_ready()
+	if extracted is Gnome:
+		extract.emit(extracted.beers_stolen, extracted.trinkets_stolen)
+	extracted.queue_free()
 	_update()

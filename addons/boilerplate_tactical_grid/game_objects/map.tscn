@@ -1,17 +1,24 @@
 [gd_scene format=3 uid="uid://cw4xrff5j6wmn"]
 
 [ext_resource type="Script" uid="uid://b5j8ev5yijjxx" path="res://addons/boilerplate_tactical_grid/game_objects/scripts/map.gd" id="1_ww0o4"]
+[ext_resource type="Shader" uid="uid://4lia8i0gj8nr" path="res://resources/shaders/outline.gdshader" id="2_k8vvt"]
 [ext_resource type="TileSet" uid="uid://bk5oa5kjd1cx0" path="res://addons/boilerplate_tactical_grid/temp_sprites/tilesets/highlight_tileset.tres" id="2_p5cqr"]
 [ext_resource type="TileSet" uid="uid://dokfe8h2kkwic" path="res://addons/boilerplate_tactical_grid/temp_sprites/tilesets/fog_tileset.tres" id="3_k8vvt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vusr5"]
+shader = ExtResource("2_k8vvt")
+shader_parameter/outline_width = 1.0
+shader_parameter/outline_color = Color(0.8235294, 0.7882353, 0.64705884, 1)
+shader_parameter/texture_region = Vector4(0, 0, 0, 0)
 
 [node name="Map" type="Node2D" unique_id=952170447]
 script = ExtResource("1_ww0o4")
 
 [node name="HighlightLayer" type="TileMapLayer" parent="." unique_id=647420736]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.627451)
 z_index = 1
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_vusr5")
 tile_set = ExtResource("2_p5cqr")
 navigation_enabled = false
 
