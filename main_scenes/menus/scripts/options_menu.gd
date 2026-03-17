@@ -9,6 +9,9 @@ func _ready():
 	super()
 	fullscreen_button.set_pressed_no_signal(SettingsManager.game_settings.fullscreen)
 	borderless_button.set_pressed_no_signal(SettingsManager.game_settings.borderless)
+	if OS.get_name() == "Web":
+		fullscreen_button.hide()
+		borderless_button.hide()
 
 func _exit_tree() -> void:
 	SettingsManager.save_game_settings()

@@ -116,7 +116,7 @@ func can_see_target(target: GridNode2D, range: int = 9999, map: Map = null) -> b
 		map = TacGrid.get_map()
 	return map.is_in_range(grid_position, target.grid_position, range, true)
 
-func can_see(target: Vector3i, range: int = 9999, map: Map = null) -> bool:
+func can_see(target: Vector3i, range: float = 9999.9, map: Map = null) -> bool:
 	if !map:
 		map = TacGrid.get_map()
 	return map.is_in_range(grid_position, target, range, true)

@@ -31,6 +31,7 @@ var locked: bool = false:
 			return
 		locked = value
 		lock_changed.emit(locked)
+var stunned_turns: int = 0
 
 
 # ENGINE
@@ -41,8 +42,11 @@ func _ready():
 
 # PUBLIC
 func start_turn():
-	actions = action_limit
-	print("%s starts turn" % display_name)
+	if stunned_turns > 0:
+		stunned_turns -= 1
+		print("Stunned! %s" % display_name)
+	else:
+		actions = action_limit
 
 func end_turn():
 	actions = 0
@@ -57,6 +61,9 @@ func move_to(target: Vector3i) -> bool:
 	movement_queue = TacGrid.get_map().get_route(grid_position, target)
 	actions -= 1
 	return true
+
+func stun(turns: int):
+	stunned_turns += turns
 
 
 # PRIVATE

@@ -15,10 +15,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Gnomes Eleven"
-config/tags=PackedStringArray("framework")
+config/tags=PackedStringArray("game_jam")
 run/main_scene="uid://dlus41dea6h08"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://btjhhrhuneo7f"
 
 [autoload]
 

@@ -2,6 +2,7 @@
 class_name Gnome extends Character
 
 const WARD: PackedScene = preload("res://game_objects/ward.tscn")
+const DUST: PackedScene = preload("res://game_objects/dust.tscn")
 
 enum Role{ MOOK, SNEAK, SPOTTER, DUSTER }
 
@@ -43,12 +44,20 @@ func cast_special() -> bool:
 			ward.grid_position = grid_position
 			add_sibling(ward)
 		Role.DUSTER:
-			print("Duster")		# TODO stun everyone within 3 tiles for 1d3 turns.
+			spawn_dusts()
 	actions -= 1
 	return true
 
 
 # PRIVATE
+func spawn_dusts(radius: float = 3):
+	for x in range(grid_position.x - ceili(radius), grid_position.x + ceili(radius) + 1):
+		for y in range(grid_position.y - ceili(radius), grid_position.y + ceili(radius) + 1):
+			var grid_temp = TacGrid.get_map().grid2d_to_grid3d(Vector2i(x, y), true)
+			if can_see(grid_temp, radius):
+				var dust: Dust = DUST.instantiate()
+				dust.grid_position = grid_temp
+				add_sibling(dust)
 
 
 # SIGNALS

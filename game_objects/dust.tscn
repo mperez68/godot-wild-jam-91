@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://ex4vdbxna8yn"]
+
+[ext_resource type="PackedScene" uid="uid://bc40b7y5j2m4v" path="res://addons/boilerplate_tactical_grid/game_objects/grid_node_2d.tscn" id="1_b46ro"]
+[ext_resource type="Script" uid="uid://dgdikftkxu58q" path="res://game_objects/scripts/dust.gd" id="2_ps0ld"]
+[ext_resource type="Texture2D" uid="uid://wjyv4fvag8mx" path="res://assets/sprites/dust.png" id="3_u2dty"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2dty"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou42x"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3xm2"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu1ov"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61ne2"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxjra"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7ls"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c20oa"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlgdy"]
+atlas = ExtResource("3_u2dty")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2dty"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2dty")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou42x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3xm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu1ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61ne2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxjra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm7ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c20oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlgdy")
+}],
+"loop": false,
+"name": &"dust",
+"speed": 12.0
+}]
+
+[node name="Dust" unique_id=1426874908 instance=ExtResource("1_b46ro")]
+script = ExtResource("2_ps0ld")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1640972155]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.7058824)
+z_index = 1
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_u2dty")
+animation = &"dust"
+autoplay = "dust"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
