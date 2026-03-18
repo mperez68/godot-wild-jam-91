@@ -3,6 +3,7 @@ class_name PlayerController extends Controller
 signal extract(beers: int, trinkets: int)
 
 @onready var ui_container: Control = %Control
+@onready var end_game_container: CenterContainer = %EndGameContainer
 @onready var comp_turn_text: MarginContainer = %CompTurnText
 @onready var cycle_left_button: ActionButton = %CycleLeftButton
 @onready var cycle_right_button: ActionButton = %CycleRightButton
@@ -10,6 +11,8 @@ signal extract(beers: int, trinkets: int)
 @onready var swipe_button: ActionButton = %SwipeButton
 @onready var special_button: ActionButton = %SpecialButton
 @onready var extract_button: ActionButton = %ExtractButton
+@onready var beers_stolen_label: Label = %BeersStolenLabel
+@onready var trinkest_stolen_label: Label = %TrinkestStolenLabel
 
 var adjacent_beers: Array[BeerBarrel]
 var adjacent_trinkets: Array[Trinket]
@@ -107,6 +110,24 @@ func _update():
 				highlight_tiles.push_back(Vector2i(x, y))
 	map.draw_highlight(Map.Highlight.MOVE_HIGHLIGHT, highlight_tiles)
 	jump_to_active()
+
+func _end_turn():
+	if get_tree().get_nodes_in_group("player").is_empty():
+		_end_game()
+	else:
+		super()
+
+func _end_game():
+	# Bad practice, don't ever do this
+	beers_stolen_label.text = str(get_parent().get_parent().beers)
+	trinkest_stolen_label.text = str(get_parent().get_parent().trinkets)
+	end_game_container.show()
+	ui_container.hide()
+	comp_turn_text.hide()
+	if get_parent().get_parent().beers >= get_parent().get_parent().beer_quota:
+		SaveStateManager.update_level_completion(get_parent().get_parent().level_name, get_parent().get_parent().beers, get_parent().get_parent().trinkets)
+	else:
+		beers_stolen_label.self_modulate = Color.RED
 
 
 # SIGNALS

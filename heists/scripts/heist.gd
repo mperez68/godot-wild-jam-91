@@ -9,6 +9,7 @@ enum Turn{ NONE, PLAYER, COMPUTER }
 @onready var camera: BoundCamera = %BoundCamera
 @onready var ui: PlayerController = %UI
 
+@export var level_name: String = ""
 @export var beer_quota: int = 1
 
 var beers: int = 0

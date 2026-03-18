@@ -7,8 +7,8 @@
 [node name="Gnome" unique_id=1426874908 groups=["player"] instance=ExtResource("1_sqdci")]
 script = ExtResource("2_hbmc6")
 role = 0
+sub_name = "Mook"
 speed = 5
-grid_position = Vector3i(0, 0, 0)
 view_range = 6.0
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]

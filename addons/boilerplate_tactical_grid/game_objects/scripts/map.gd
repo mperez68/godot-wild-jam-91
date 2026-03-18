@@ -111,7 +111,7 @@ func get_cell_tile_data_local(local_position: Vector2) -> TileData:
 
 ## Disables or enables the specified point for pathfinding. Useful for making a temporary obstacle.
 func set_point_disabled(pos: Vector3i, solid: bool = true):
-	if nav.has_point(_grid3d_to_id(pos)):
+	if nav and nav.has_point(_grid3d_to_id(pos)):
 		nav.set_point_disabled(_grid3d_to_id(pos), solid)
 
 # Navigation
