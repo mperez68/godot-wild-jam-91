@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://num713wr1qhp" path="res://ui/gated_button.tscn" id="4_58g77"]
 [ext_resource type="PackedScene" uid="uid://dipq3gkx5nfb4" path="res://heists/first_heist.tscn" id="5_7l6c1"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="6_xlycj"]
+[ext_resource type="PackedScene" uid="uid://tqwr2lsttq3w" path="res://heists/second_heist.tscn" id="7_2adev"]
+[ext_resource type="PackedScene" uid="uid://cg8i1xj85msfw" path="res://heists/third_heist.tscn" id="7_wam4b"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="7_xlycj"]
 
 [sub_resource type="Resource" id="Resource_xlycj"]
@@ -16,13 +18,13 @@ metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_wam4b"]
 script = ExtResource("6_xlycj")
-packed_scene = ExtResource("5_7l6c1")
+packed_scene = ExtResource("7_2adev")
 button_text = "Second Heist"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_2adev"]
 script = ExtResource("6_xlycj")
-packed_scene = ExtResource("5_7l6c1")
+packed_scene = ExtResource("7_wam4b")
 button_text = "Third Heist"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
@@ -106,6 +108,7 @@ beers_required = 1
 scene_link = SubResource("Resource_wam4b")
 
 [node name="GatedButton3" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1157101265 instance=ExtResource("4_58g77")]
+visible = false
 layout_mode = 2
 text = "Third Heist"
 beers_required = 3

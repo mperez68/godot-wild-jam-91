@@ -32,8 +32,10 @@ animations = [{
 }]
 
 [node name="BeerBarrel" unique_id=1426874908 instance=ExtResource("1_wwopl")]
+z_index = 1
 script = ExtResource("2_gjp5c")
 expended = false
+grid_position = Vector3i(0, 0, 1)
 blocking = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=1073610612]

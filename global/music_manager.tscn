@@ -17,7 +17,7 @@
 script = ExtResource("1_57y8n")
 
 [node name="Song1" parent="." unique_id=364855666 instance=ExtResource("2_jhamn")]
-song_name = "Menu"
+song_name = "level"
 intro_rhythm = ExtResource("3_xd52x")
 intro_lead = ExtResource("4_lul4r")
 loop_rhythm = ExtResource("5_ekuvj")
@@ -26,7 +26,7 @@ outro_rhythm = ExtResource("7_sdfcm")
 outro_lead = ExtResource("8_k1edt")
 
 [node name="Song2" parent="." unique_id=1350606522 instance=ExtResource("2_jhamn")]
-song_name = "Alternate"
+song_name = "Menu"
 intro_rhythm = ExtResource("9_8oqg7")
 intro_lead = ExtResource("10_sdpgi")
 loop_rhythm = ExtResource("11_n4oys")

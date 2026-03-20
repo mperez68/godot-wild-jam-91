@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cg8i1xj85msfw"]
+
+[ext_resource type="PackedScene" uid="uid://bb81gctml31av" path="res://heists/heist.tscn" id="1_3xvq6"]
+
+[node name="Heist" unique_id=61096881 instance=ExtResource("1_3xvq6")]

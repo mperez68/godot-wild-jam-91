@@ -24,6 +24,8 @@ var turn: Turn = Turn.NONE:
 
 # ENGINE
 func _ready() -> void:
+	MusicManager.play("level")
+	MusicManager.play_leads(false)
 	var limits: Rect2 = Rect2(map.used_rect)
 	limits.position *= TacGrid.grid_size
 	limits.size *= TacGrid.grid_size

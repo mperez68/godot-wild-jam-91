@@ -379,6 +379,7 @@ tile_set = ExtResource("2_vqqx4")
 
 [node name="Dropzone" type="TileMapLayer" parent="." unique_id=1823307807]
 unique_name_in_owner = true
+z_index = 2
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ijmkk")
 

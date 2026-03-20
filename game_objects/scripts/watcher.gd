@@ -34,6 +34,7 @@ func scan_targets():
 		return
 	for entity in get_tree().get_nodes_in_group("player"):
 		if entity is Gnome and can_see_cone(entity.grid_position):
+			MusicManager.play_leads(true)
 			chase_target = entity
 			chase_target.spotted_sprite_2d.show()
 			aggro_sfx.play()

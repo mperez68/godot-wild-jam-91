@@ -125,6 +125,8 @@ func _start_turn():
 	_end_game()	# If characters are all stunned or ready queue is empty, end game
 
 func _end_game():
+	MusicManager.play_leads(true)
+	MusicManager.stop(true)
 	# Bad practice, don't ever do this
 	beers_stolen_label.text = str(get_parent().get_parent().beers)
 	trinkest_stolen_label.text = str(get_parent().get_parent().trinkets)

@@ -24,6 +24,10 @@ func stop(play_outro: bool = false):
 	for song in songs.values():
 		song.stop(play_outro)
 
+func play_leads(playing: bool):
+	for song in songs.values():
+		song.play_leads(playing)
+
 
 # PRIVATE
 

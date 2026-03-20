@@ -16,6 +16,8 @@ func _update_text():
 		disabled = true
 		text = "%s beers" % beers_required
 		return
+	else:
+		disabled = false
 	super()
 
 

@@ -1,11 +1,14 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://diln7n0kthfvr"]
 
 [ext_resource type="Texture2D" uid="uid://bda4dgdo6ak0q" path="res://assets/sprites/orcs.png" id="1_bhon6"]
-[ext_resource type="Texture2D" uid="uid://gb8q7f4fwc7j" path="res://addons/boilerplate_tactical_grid/temp_sprites/temp_highlights.png" id="1_k0l5a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3awpi"]
-atlas = ExtResource("1_k0l5a")
-region = Rect2(16, 0, 16, 16)
+atlas = ExtResource("1_bhon6")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph0xx"]
+atlas = ExtResource("1_bhon6")
+region = Rect2(100, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhon6"]
 atlas = ExtResource("1_bhon6")
@@ -28,10 +31,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3awpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph0xx")
 }],
 "loop": true,
 "name": &"die",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 4.0,

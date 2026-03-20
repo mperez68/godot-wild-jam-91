@@ -13,6 +13,7 @@ enum State{ STOPPED, INTRO, LOOP, OUTRO }
 @onready var intro: Array[AudioStreamPlayer] = [%IntroRhythm, %IntroLead]
 @onready var loop: Array[AudioStreamPlayer] = [%LoopRhythm, %LoopLead]
 @onready var outro: Array[AudioStreamPlayer] = [%OutroRhythm, %OutroLead]
+@onready var leads: Array[AudioStreamPlayer] = [%IntroLead, %LoopLead, %OutroLead]
 @onready var all_tracks: Array[AudioStreamPlayer] = intro + loop + outro
 
 var state: State = State.STOPPED
@@ -55,6 +56,10 @@ func stop(play_outro: bool = true):
 			state = State.OUTRO
 		else:
 			track.stop()
+
+func play_leads(playing: bool):
+	for lead in leads:
+		lead.volume_linear = 1.0 if playing else 0.0
 
 
 # PRIVATE

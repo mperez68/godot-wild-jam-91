@@ -32,8 +32,10 @@ animations = [{
 }]
 
 [node name="Trinket" unique_id=1426874908 instance=ExtResource("1_g0js1")]
+z_index = 1
 script = ExtResource("2_xy8eu")
 stolen = false
+grid_position = Vector3i(0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0" unique_id=329819877]
 unique_name_in_owner = true
