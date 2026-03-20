@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b1pwl8ykshqrv"]
+
+[ext_resource type="Texture2D" uid="uid://di10ot7d1agoj" path="res://assets/sprites/sneak_gnome.png" id="1_6ceee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nefq"]
+atlas = ExtResource("1_6ceee")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjl53"]
+atlas = ExtResource("1_6ceee")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh6mo"]
+atlas = ExtResource("1_6ceee")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doi8f"]
+atlas = ExtResource("1_6ceee")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ias8t"]
+atlas = ExtResource("1_6ceee")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30fgl"]
+atlas = ExtResource("1_6ceee")
+region = Rect2(60, 0, 20, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nefq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjl53")
+}],
+"loop": true,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_mh6mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doi8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ias8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30fgl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]

@@ -8,8 +8,8 @@
 script = ExtResource("2_ilgkb")
 vis_range = 4.0
 display_name = "Orc"
-speed = 3
+speed = 2
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
 sprite_frames = ExtResource("2_gtmjs")
-frame_progress = 0.0
+animation = &"die"

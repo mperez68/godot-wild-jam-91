@@ -6,6 +6,16 @@ signal lock_changed(new_state: bool)
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var arrow_sprite: Sprite2D = %ArrowSprite
 @onready var move_timer: Timer = %MoveTimer
+@onready var spotted_sprite_2d: Sprite2D = %SpottedSprite2D
+@onready var aggro_sprite_2d: Sprite2D = %AggroSprite2D
+
+@onready var stun_sfx: AudioStreamPlayer2D = %StunSfx
+@onready var move_sfx: AudioStreamPlayer2D = %MoveSfx
+@onready var aggro_sfx: AudioStreamPlayer2D = %AggroSfx
+@onready var trinket_sfx: AudioStreamPlayer2D = %TrinketSfx
+@onready var beer_sfx: AudioStreamPlayer2D = %BeerSfx
+@onready var turn_sfx: AudioStreamPlayer2D = %TurnSfx
+@onready var ability_sfx: AudioStreamPlayer2D = %AbilitySfx
 
 @export_placeholder("Character Name") var display_name: String = "":
 	set(value):
@@ -44,13 +54,16 @@ func _ready():
 func start_turn():
 	if stunned_turns > 0:
 		stunned_turns -= 1
+		stun_sfx.play()
 		print("Stunned! %s" % display_name)
 	else:
+		animated_sprite_2d.play("idle")
 		actions = action_limit
 
 func end_turn():
 	actions = 0
 	print("%s ends turn" % display_name)
+	turn_sfx.play()
 
 func can_travel(target: Vector3i) -> bool:
 	return TacGrid.get_map().is_navigable(grid_position, target, speed)
@@ -60,10 +73,25 @@ func move_to(target: Vector3i) -> bool:
 		return false
 	movement_queue = TacGrid.get_map().get_route(grid_position, target)
 	actions -= 1
+	move_sfx.play()
 	return true
 
+func turn(dir: int = 0):
+	if dir == 0:
+		dir = -1 if randf() > 0.5 else 1
+	facing = ((dir + (facing as int)) % Facing.size()) as Facing
+	move_sfx.play()
+
 func stun(turns: int):
+	stun_sfx.play()
 	stunned_turns += turns
+	animated_sprite_2d.play("die")
+
+func get_display_name() -> String:
+	var ret: String = "%s" % display_name
+	if sub_name:
+		ret += ", %s" % sub_name
+	return ret
 
 
 # PRIVATE

@@ -71,5 +71,4 @@ grid_position = Vector3i(9, 2, 1)
 
 [node name="Gnome" parent="." index="14" unique_id=948027320 instance=ExtResource("5_e4yk8")]
 position = Vector2(40, 40)
-sub_name = "Mook"
 grid_position = Vector3i(2, 2, 1)

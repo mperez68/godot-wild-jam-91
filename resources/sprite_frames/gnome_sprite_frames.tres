@@ -1,6 +1,14 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://djrrmvpq8i6fa"]
 
-[ext_resource type="Texture2D" uid="uid://w3s7dog6gxwh" path="res://assets/sprites/gnome_1.png" id="1_o42li"]
+[ext_resource type="Texture2D" uid="uid://bmdm445vp7j60" path="res://assets/sprites/mook_gnome.png" id="1_o42li"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jnsq"]
+atlas = ExtResource("1_o42li")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea7cw"]
+atlas = ExtResource("1_o42li")
+region = Rect2(100, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o42li"]
 atlas = ExtResource("1_o42li")
@@ -20,6 +28,17 @@ region = Rect2(60, 0, 20, 20)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jnsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea7cw")
+}],
+"loop": true,
+"name": &"die",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 4.0,
 "texture": SubResource("AtlasTexture_o42li")

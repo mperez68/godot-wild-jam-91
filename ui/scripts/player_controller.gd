@@ -117,6 +117,13 @@ func _end_turn():
 	else:
 		super()
 
+func _start_turn():
+	super()
+	for character in ready_queue:
+		if character.stunned_turns <= 0:
+			return
+	_end_game()	# If characters are all stunned or ready queue is empty, end game
+
 func _end_game():
 	# Bad practice, don't ever do this
 	beers_stolen_label.text = str(get_parent().get_parent().beers)
@@ -140,7 +147,6 @@ func _on_heist_turn_changed(new_turn: Heist.Turn) -> void:
 	print("my turn!")
 	_start_turn()
 
-
 func _on_cycle_button_pressed(next: bool) -> void:
 	if ready_queue.size() <= 1:
 		return
@@ -161,6 +167,7 @@ func _on_beer_button_pressed() -> void:
 	for beer in adjacent_beers:
 		beer.expended = true
 		ready_queue.front().beers_stolen += 1
+		ready_queue.front().beer_sfx.play()
 	ready_queue.front().actions -= 1
 	_update()
 
@@ -171,12 +178,14 @@ func _on_swipe_button_pressed() -> void:
 	for trinket in adjacent_trinkets:
 		trinket.steal()
 		ready_queue.front().trinkets_stolen += 1
+		ready_queue.front().trinket_sfx.play()
 	ready_queue.front().actions -= 1
 	_update()
 
 func _on_special_button_pressed() -> void:
 	if ready_queue.front().cast_special():
 		TacGrid.get_map().clear_highlights()
+		ready_queue.front().ability_sfx.play()
 	_update()
 
 func _on_extract_button_pressed() -> void:

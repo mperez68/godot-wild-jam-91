@@ -35,9 +35,16 @@ func scan_targets():
 	for entity in get_tree().get_nodes_in_group("player"):
 		if entity is Gnome and can_see_cone(entity.grid_position):
 			chase_target = entity
+			chase_target.spotted_sprite_2d.show()
+			aggro_sfx.play()
+			aggro_sprite_2d.show()
 			update_vis_ranges()
 			return
 
+func turn(dir: int = 0):
+	super(dir)
+	update_vis_ranges()
+	scan_targets()
 
 # PRIVATE
 

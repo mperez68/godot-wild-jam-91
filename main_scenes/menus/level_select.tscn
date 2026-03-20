@@ -3,15 +3,27 @@
 [ext_resource type="Script" uid="uid://bj6urgepcagii" path="res://main_scenes/menus/scripts/level_select.gd" id="1_4d02l"]
 [ext_resource type="TileSet" uid="uid://du3hre2y3tm5x" path="res://resources/tilesets/heist_tileset.tres" id="2_hqyvo"]
 [ext_resource type="LabelSettings" uid="uid://bgghdhgj1v8uh" path="res://resources/ui/sub_header_settings.tres" id="3_sv78h"]
-[ext_resource type="PackedScene" uid="uid://dhn5bb6wsu3fv" path="res://ui/scene_change_button.tscn" id="4_58g77"]
+[ext_resource type="PackedScene" uid="uid://num713wr1qhp" path="res://ui/gated_button.tscn" id="4_58g77"]
 [ext_resource type="PackedScene" uid="uid://dipq3gkx5nfb4" path="res://heists/first_heist.tscn" id="5_7l6c1"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="6_xlycj"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="7_xlycj"]
 
-[sub_resource type="Resource" id="Resource_wam4b"]
+[sub_resource type="Resource" id="Resource_xlycj"]
 script = ExtResource("6_xlycj")
 packed_scene = ExtResource("5_7l6c1")
 button_text = "First Heist"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_wam4b"]
+script = ExtResource("6_xlycj")
+packed_scene = ExtResource("5_7l6c1")
+button_text = "Second Heist"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_2adev"]
+script = ExtResource("6_xlycj")
+packed_scene = ExtResource("5_7l6c1")
+button_text = "Third Heist"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [node name="LevelSelect" type="Control" unique_id=1622412606]
@@ -82,26 +94,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="SceneChangeButton" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1543665211 instance=ExtResource("4_58g77")]
-custom_minimum_size = Vector2(64, 16)
+[node name="GatedButton" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=392423317 instance=ExtResource("4_58g77")]
 layout_mode = 2
 text = "First Heist"
+scene_link = SubResource("Resource_xlycj")
+
+[node name="GatedButton2" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=2070175842 instance=ExtResource("4_58g77")]
+layout_mode = 2
+text = "Second Heist"
+beers_required = 1
 scene_link = SubResource("Resource_wam4b")
 
-[node name="SceneChangeButton2" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1278535913 instance=ExtResource("4_58g77")]
-custom_minimum_size = Vector2(64, 16)
+[node name="GatedButton3" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1157101265 instance=ExtResource("4_58g77")]
 layout_mode = 2
-disabled = true
-
-[node name="SceneChangeButton3" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1498648512 instance=ExtResource("4_58g77")]
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 2
-disabled = true
-
-[node name="SceneChangeButton4" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1766955443 instance=ExtResource("4_58g77")]
-custom_minimum_size = Vector2(64, 16)
-layout_mode = 2
-disabled = true
+text = "Third Heist"
+beers_required = 3
+scene_link = SubResource("Resource_2adev")
 
 [node name="Control" type="Control" parent="MarginContainer" unique_id=1891313766]
 layout_mode = 2

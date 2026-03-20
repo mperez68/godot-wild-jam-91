@@ -9,9 +9,6 @@ func _ready():
 	super()
 	fullscreen_button.set_pressed_no_signal(SettingsManager.game_settings.fullscreen)
 	borderless_button.set_pressed_no_signal(SettingsManager.game_settings.borderless)
-	if OS.get_name() == "Web":
-		fullscreen_button.hide()
-		borderless_button.hide()
 
 func _exit_tree() -> void:
 	SettingsManager.save_game_settings()
@@ -29,3 +26,7 @@ func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 
 func _on_borderless_button_toggled(toggled_on: bool) -> void:
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, toggled_on)
+
+func _on_reset_button_pressed() -> void:
+	SaveStateManager.save_state = SaveState.new()
+	SaveStateManager.save_game_state()

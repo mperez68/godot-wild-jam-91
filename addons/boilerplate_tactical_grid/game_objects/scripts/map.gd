@@ -137,7 +137,7 @@ func get_route(start: Vector3i, end: Vector3i, start_inclusive: bool = false, en
 		route_3d.pop_back()
 	return route_3d
 
-func get_route_near(start: Vector3i, end: Vector3i, range_tolerance: float, require_visibility: bool) -> Array[Vector3i]:
+func get_route_near(start: Vector3i, end: Vector3i, range_tolerance: float = 1, require_visibility: bool = true) -> Array[Vector3i]:
 	var best_route: Array[Vector3i] = []
 	for x in range(end.x - ceili(range_tolerance), end.x + ceili(range_tolerance) + 1):
 		for y in range(end.y - ceili(range_tolerance), end.y + ceili(range_tolerance) + 1):

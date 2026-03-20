@@ -10,6 +10,15 @@ enum Role{ MOOK, SNEAK, SPOTTER, DUSTER }
 	set(value):
 		role = value
 		sub_name = str(Role.keys()[role]).capitalize()
+		if animated_sprite_2d:
+			animated_sprite_2d.sprite_frames = role_sprite_sheet_map[role]
+
+var role_sprite_sheet_map: Dictionary[Role, SpriteFrames] = {
+	Role.MOOK: preload("res://resources/sprite_frames/gnome_sprite_frames.tres"),
+	Role.SNEAK: preload("res://resources/sprite_frames/sneak_sprite_frames.tres"),
+	Role.SPOTTER: preload("res://resources/sprite_frames/spotter_sprite_frames.tres"),
+	Role.DUSTER: preload("res://resources/sprite_frames/duster_sprite_frames.tres")
+}
 
 var beers_stolen: int = 0
 var trinkets_stolen: int = 0

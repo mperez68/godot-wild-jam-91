@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cc03pw1wwyqm6"]
+
+[ext_resource type="Texture2D" uid="uid://pxtfdvmmha4u" path="res://assets/sprites/spotter_gnome.png" id="1_hi4qu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqug7"]
+atlas = ExtResource("1_hi4qu")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtack"]
+atlas = ExtResource("1_hi4qu")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr220"]
+atlas = ExtResource("1_hi4qu")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8um7"]
+atlas = ExtResource("1_hi4qu")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0ybw"]
+atlas = ExtResource("1_hi4qu")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0elyh"]
+atlas = ExtResource("1_hi4qu")
+region = Rect2(60, 0, 20, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqug7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtack")
+}],
+"loop": true,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_xr220")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8um7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0ybw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0elyh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]

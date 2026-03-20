@@ -10,7 +10,42 @@ class_name ComputerController extends Controller
 
 
 # PRIVATE
+func _start_turn():
+	super()
+	pause_timer.start()
+
 func _update():
+	if locked_characters > 0:
+		return
+	if ready_queue.is_empty():
+		_end_turn()
+		return
+	# Check actions left
+	var ready_character: Character = ready_queue.front()
+	if ready_character.actions <= 0:
+		_pop_ready()
+		pause_timer.start()
+		return
+	var map: Map = TacGrid.get_map()
+	if ready_character is Watcher and ready_character.chase_target:
+		if ready_character.can_see_target(ready_character.chase_target, 1, map):
+			# Close enough to strike
+			ready_character.chase_target.stun(1)
+			ready_character.actions -= 1
+			pause_timer.start()
+			return
+		# Get route to approach
+		var route: Array[Vector3i] = map.get_route_near(ready_character.grid_position, ready_character.chase_target.grid_position).slice(0, ready_character.speed)
+		if route.is_empty():
+			# No route, pass turn
+			_pop_ready()
+		else:
+			# Approach target
+			ready_character.move_to(route.back())
+			return
+	else:
+		ready_character.turn()
+		_pop_ready()
 	pause_timer.start()
 
 
@@ -23,4 +58,4 @@ func _on_heist_turn_changed(new_turn: Heist.Turn) -> void:
 	_start_turn()
 
 func _on_pause_timer_timeout() -> void:
-	_end_turn()	# TODO actual turn
+	_update()

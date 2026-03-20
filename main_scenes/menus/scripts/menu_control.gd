@@ -1,9 +1,14 @@
 class_name MenuControl extends Control
 
+@export var hide_for_mobile: Array[Control]
+
 
 # ENGINE
 func _ready():
 	MusicManager.play("Menu")
+	if OS.get_name() == "Web":
+		for node in hide_for_mobile:
+			node.hide()
 	var first_button = _search_for_button(self)
 	if first_button:
 		first_button.grab_focus()

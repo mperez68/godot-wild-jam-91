@@ -5,6 +5,15 @@
 [ext_resource type="SpriteFrames" uid="uid://sirg7scjtkun" path="res://resources/sprite_frames/generic_sprite_frames.tres" id="3_i0pnu"]
 [ext_resource type="Texture2D" uid="uid://tf124p38cp5c" path="res://assets/sprites/direction_arrow.png" id="3_ylqgr"]
 [ext_resource type="Shader" uid="uid://4lia8i0gj8nr" path="res://resources/shaders/outline.gdshader" id="4_8oebs"]
+[ext_resource type="Texture2D" uid="uid://e4o18wgdd468" path="res://assets/sprites/spotted_note.png" id="6_a73ab"]
+[ext_resource type="Texture2D" uid="uid://b6o3jwrq70eat" path="res://assets/sprites/aggro_note.png" id="7_rwjpq"]
+[ext_resource type="AudioStream" uid="uid://cepeksdtqad8f" path="res://assets/sfx/hit.wav" id="8_b8rid"]
+[ext_resource type="AudioStream" uid="uid://d2ds84jkxei2x" path="res://assets/sfx/move.wav" id="9_4mjof"]
+[ext_resource type="AudioStream" uid="uid://dg3oll2r22u27" path="res://assets/sfx/death.wav" id="10_t3chi"]
+[ext_resource type="AudioStream" uid="uid://bah4sk850mnc3" path="res://assets/sfx/shoot.wav" id="11_0c6tw"]
+[ext_resource type="AudioStream" uid="uid://dcskn67fbe38c" path="res://assets/sfx/heal.wav" id="12_fw5v7"]
+[ext_resource type="AudioStream" uid="uid://p4mdtggcjqxd" path="res://assets/sfx/turn.wav" id="13_4mjof"]
+[ext_resource type="AudioStream" uid="uid://b6hdlx0rjd68q" path="res://assets/sfx/damage.wav" id="14_t3chi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a73ab"]
 shader = ExtResource("4_8oebs")
@@ -32,11 +41,63 @@ material = SubResource("ShaderMaterial_a73ab")
 sprite_frames = ExtResource("3_i0pnu")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.6291818
 
-[node name="MoveTimer" type="Timer" parent="." index="2" unique_id=679955041]
+[node name="SpottedSprite2D" type="Sprite2D" parent="." index="2" unique_id=961869497]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0.7058824)
+z_index = 2
+y_sort_enabled = true
+position = Vector2(0, -13)
+texture = ExtResource("6_a73ab")
+
+[node name="AggroSprite2D" type="Sprite2D" parent="." index="3" unique_id=1151857780]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0.7058824)
+z_index = 2
+y_sort_enabled = true
+position = Vector2(0, -14)
+texture = ExtResource("7_rwjpq")
+
+[node name="MoveTimer" type="Timer" parent="." index="4" unique_id=679955041]
 unique_name_in_owner = true
 wait_time = 0.35
+
+[node name="StunSfx" type="AudioStreamPlayer2D" parent="." index="5" unique_id=1188822385]
+unique_name_in_owner = true
+stream = ExtResource("8_b8rid")
+bus = &"Sfx"
+
+[node name="MoveSfx" type="AudioStreamPlayer2D" parent="." index="6" unique_id=1489699206]
+unique_name_in_owner = true
+stream = ExtResource("9_4mjof")
+bus = &"Sfx"
+
+[node name="AggroSfx" type="AudioStreamPlayer2D" parent="." index="7" unique_id=1397398007]
+unique_name_in_owner = true
+stream = ExtResource("10_t3chi")
+bus = &"Sfx"
+
+[node name="TrinketSfx" type="AudioStreamPlayer2D" parent="." index="8" unique_id=1767670546]
+unique_name_in_owner = true
+stream = ExtResource("11_0c6tw")
+bus = &"Sfx"
+
+[node name="BeerSfx" type="AudioStreamPlayer2D" parent="." index="9" unique_id=1605220694]
+unique_name_in_owner = true
+stream = ExtResource("12_fw5v7")
+bus = &"Sfx"
+
+[node name="TurnSfx" type="AudioStreamPlayer2D" parent="." index="10" unique_id=41156441]
+unique_name_in_owner = true
+stream = ExtResource("13_4mjof")
+bus = &"Sfx"
+
+[node name="AbilitySfx" type="AudioStreamPlayer2D" parent="." index="11" unique_id=774867552]
+unique_name_in_owner = true
+stream = ExtResource("14_t3chi")
+bus = &"Sfx"
 
 [connection signal="moved" from="." to="." method="_on_moved"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
