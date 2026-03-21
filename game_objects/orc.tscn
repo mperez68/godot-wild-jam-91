@@ -12,4 +12,3 @@ speed = 2
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
 sprite_frames = ExtResource("2_gtmjs")
-animation = &"die"

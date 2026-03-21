@@ -10,6 +10,7 @@ func _ready():
 	beers_label.text = str("%s Beers Stolen" % SaveStateManager.save_state.get_total_beers())
 	trinkets_label.text = str("%s Trinkets Stolen" % SaveStateManager.save_state.get_total_trinkets())
 	super()
+	MusicManager.play_leads(true)
 
 
 # PUBLIC

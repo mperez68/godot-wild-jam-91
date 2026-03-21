@@ -19,13 +19,38 @@ metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 [sub_resource type="Resource" id="Resource_wam4b"]
 script = ExtResource("6_xlycj")
 packed_scene = ExtResource("7_2adev")
-button_text = "Second Heist"
+button_text = "Double Trouble"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_2adev"]
 script = ExtResource("6_xlycj")
 packed_scene = ExtResource("7_wam4b")
-button_text = "Third Heist"
+button_text = "The Sneak"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_vl0qh"]
+script = ExtResource("6_xlycj")
+button_text = "The Spotter"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_a0y8h"]
+script = ExtResource("6_xlycj")
+button_text = "Bad Bacon"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_yup17"]
+script = ExtResource("6_xlycj")
+button_text = "The Duster"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_xh6qr"]
+script = ExtResource("6_xlycj")
+button_text = "One Last Job"
+metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
+
+[sub_resource type="Resource" id="Resource_nws1h"]
+script = ExtResource("6_xlycj")
+button_text = "The Sequel"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [node name="LevelSelect" type="Control" unique_id=1622412606]
@@ -91,28 +116,68 @@ size_flags_vertical = 3
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer2" unique_id=1369938535]
 layout_mode = 2
 
-[node name="VBoxContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" unique_id=1148781240]
+[node name="VBoxContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer" unique_id=726205048]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 4
 
 [node name="GatedButton" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=392423317 instance=ExtResource("4_58g77")]
 layout_mode = 2
 text = "First Heist"
+trinkets_required = 0
 scene_link = SubResource("Resource_xlycj")
 
 [node name="GatedButton2" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=2070175842 instance=ExtResource("4_58g77")]
 layout_mode = 2
-text = "Second Heist"
+text = "Double Trouble"
 beers_required = 1
+trinkets_required = 0
 scene_link = SubResource("Resource_wam4b")
 
 [node name="GatedButton3" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1157101265 instance=ExtResource("4_58g77")]
-visible = false
 layout_mode = 2
-text = "Third Heist"
+text = "The Sneak"
 beers_required = 3
+trinkets_required = 0
 scene_link = SubResource("Resource_2adev")
+
+[node name="GatedButton4" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=627172820 instance=ExtResource("4_58g77")]
+layout_mode = 2
+text = "The Spotter"
+beers_required = 6
+trinkets_required = 0
+scene_link = SubResource("Resource_vl0qh")
+
+[node name="GatedButton5" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1484613795 instance=ExtResource("4_58g77")]
+layout_mode = 2
+text = "Bad Bacon"
+beers_required = 8
+trinkets_required = 0
+scene_link = SubResource("Resource_a0y8h")
+
+[node name="GatedButton6" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=157853660 instance=ExtResource("4_58g77")]
+layout_mode = 2
+text = "The Duster"
+beers_required = 12
+trinkets_required = 0
+scene_link = SubResource("Resource_yup17")
+
+[node name="GatedButton7" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1992642492 instance=ExtResource("4_58g77")]
+layout_mode = 2
+text = "One Last Job"
+beers_required = 15
+trinkets_required = 0
+scene_link = SubResource("Resource_xh6qr")
+
+[node name="GatedButton8" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1553275230 instance=ExtResource("4_58g77")]
+layout_mode = 2
+text = "The Sequel"
+beers_required = 20
+trinkets_required = 7
+scene_link = SubResource("Resource_nws1h")
 
 [node name="Control" type="Control" parent="MarginContainer" unique_id=1891313766]
 layout_mode = 2

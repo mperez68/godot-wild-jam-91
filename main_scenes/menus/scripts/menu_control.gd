@@ -6,6 +6,7 @@ class_name MenuControl extends Control
 # ENGINE
 func _ready():
 	MusicManager.play("Menu")
+	MusicManager.play_leads(false)
 	if OS.get_name() == "Web":
 		for node in hide_for_mobile:
 			node.hide()
