@@ -29,6 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if !map.is_in_fog(target_grid) and ready_queue.front().move_to(target_grid):
 				map.clear_highlights()
+				_update()
 		elif event is InputEventMouseMotion:
 			if map.is_highlighted(target_grid):
 				map.draw_highlight(Map.Highlight.MOVE_HOVER, [Vector2i(target_grid.x, target_grid.y)])

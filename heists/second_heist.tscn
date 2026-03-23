@@ -34,6 +34,7 @@ grid_position = Vector3i(7, 7, 1)
 
 [node name="BeerBarrel2" parent="." index="8" unique_id=22824571 instance=ExtResource("3_ey8fx")]
 position = Vector2(136, 120)
+expended = true
 grid_position = Vector3i(8, 7, 1)
 
 [node name="BeerBarrel3" parent="." index="9" unique_id=471994470 instance=ExtResource("3_ey8fx")]
@@ -73,7 +74,6 @@ grid_position = Vector3i(3, 18, 1)
 
 [node name="BeerBarrel11" parent="." index="16" unique_id=364316041 instance=ExtResource("3_ey8fx")]
 position = Vector2(136, 296)
-expended = true
 grid_position = Vector3i(8, 18, 1)
 
 [node name="BeerBarrel12" parent="." index="17" unique_id=1941684624 instance=ExtResource("3_ey8fx")]
@@ -83,7 +83,6 @@ grid_position = Vector3i(9, 18, 1)
 
 [node name="BeerBarrel13" parent="." index="18" unique_id=1608620073 instance=ExtResource("3_ey8fx")]
 position = Vector2(248, 296)
-expended = true
 grid_position = Vector3i(15, 18, 1)
 
 [node name="BeerBarrel14" parent="." index="19" unique_id=628343373 instance=ExtResource("3_ey8fx")]
@@ -128,6 +127,7 @@ grid_position = Vector3i(21, 16, 1)
 
 [node name="BeerBarrel22" parent="." index="27" unique_id=630759150 instance=ExtResource("3_ey8fx")]
 position = Vector2(248, 120)
+expended = true
 grid_position = Vector3i(15, 7, 1)
 
 [node name="BeerBarrel23" parent="." index="28" unique_id=2123344951 instance=ExtResource("3_ey8fx")]
@@ -170,8 +170,8 @@ position = Vector2(184, 248)
 grid_position = Vector3i(11, 15, 1)
 
 [node name="Trinket" parent="." index="36" unique_id=1648188031 instance=ExtResource("4_gd224")]
-position = Vector2(200, 200)
-grid_position = Vector3i(12, 12, 1)
+position = Vector2(200, 296)
+grid_position = Vector3i(12, 18, 1)
 
 [node name="Gnome" parent="." index="37" unique_id=2056603200 instance=ExtResource("5_gd224")]
 position = Vector2(56, 40)

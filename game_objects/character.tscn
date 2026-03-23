@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://dg3oll2r22u27" path="res://assets/sfx/death.wav" id="10_t3chi"]
 [ext_resource type="AudioStream" uid="uid://bah4sk850mnc3" path="res://assets/sfx/shoot.wav" id="11_0c6tw"]
 [ext_resource type="AudioStream" uid="uid://dcskn67fbe38c" path="res://assets/sfx/heal.wav" id="12_fw5v7"]
-[ext_resource type="AudioStream" uid="uid://p4mdtggcjqxd" path="res://assets/sfx/turn.wav" id="13_4mjof"]
 [ext_resource type="AudioStream" uid="uid://b6hdlx0rjd68q" path="res://assets/sfx/damage.wav" id="14_t3chi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a73ab"]
@@ -89,12 +88,7 @@ unique_name_in_owner = true
 stream = ExtResource("12_fw5v7")
 bus = &"Sfx"
 
-[node name="TurnSfx" type="AudioStreamPlayer2D" parent="." index="10" unique_id=41156441]
-unique_name_in_owner = true
-stream = ExtResource("13_4mjof")
-bus = &"Sfx"
-
-[node name="AbilitySfx" type="AudioStreamPlayer2D" parent="." index="11" unique_id=774867552]
+[node name="AbilitySfx" type="AudioStreamPlayer2D" parent="." index="10" unique_id=774867552]
 unique_name_in_owner = true
 stream = ExtResource("14_t3chi")
 bus = &"Sfx"

@@ -7,8 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dipq3gkx5nfb4" path="res://heists/first_heist.tscn" id="5_7l6c1"]
 [ext_resource type="Script" uid="uid://b4jy0dhl1u7ls" path="res://resources/scripts/packed_scene_link.gd" id="6_xlycj"]
 [ext_resource type="PackedScene" uid="uid://tqwr2lsttq3w" path="res://heists/second_heist.tscn" id="7_2adev"]
-[ext_resource type="PackedScene" uid="uid://cg8i1xj85msfw" path="res://heists/third_heist.tscn" id="7_wam4b"]
+[ext_resource type="PackedScene" uid="uid://cg8i1xj85msfw" path="res://heists/stealth_gnome.tscn" id="7_wam4b"]
 [ext_resource type="PackedScene" uid="uid://c1iwfo7rduuxg" path="res://ui/quit_button.tscn" id="7_xlycj"]
+[ext_resource type="PackedScene" uid="uid://bgdwlx2wwbajl" path="res://heists/spotter_gnome.tscn" id="9_nws1h"]
+[ext_resource type="PackedScene" uid="uid://y4uvv6t87y6o" path="res://heists/bad_bacon.tscn" id="10_5gaq1"]
+[ext_resource type="PackedScene" uid="uid://dqxkc2frfadhi" path="res://heists/duster_gnome.tscn" id="11_mvpo0"]
+[ext_resource type="PackedScene" uid="uid://bg837qhrfmydk" path="res://heists/last_job.tscn" id="12_gy038"]
+[ext_resource type="PackedScene" uid="uid://b4gsv06fxhe5j" path="res://heists/sequel.tscn" id="13_g0fov"]
 
 [sub_resource type="Resource" id="Resource_xlycj"]
 script = ExtResource("6_xlycj")
@@ -30,26 +35,31 @@ metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_vl0qh"]
 script = ExtResource("6_xlycj")
+packed_scene = ExtResource("9_nws1h")
 button_text = "The Spotter"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_a0y8h"]
 script = ExtResource("6_xlycj")
+packed_scene = ExtResource("10_5gaq1")
 button_text = "Bad Bacon"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_yup17"]
 script = ExtResource("6_xlycj")
+packed_scene = ExtResource("11_mvpo0")
 button_text = "The Duster"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_xh6qr"]
 script = ExtResource("6_xlycj")
+packed_scene = ExtResource("12_gy038")
 button_text = "One Last Job"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
 [sub_resource type="Resource" id="Resource_nws1h"]
 script = ExtResource("6_xlycj")
+packed_scene = ExtResource("13_g0fov")
 button_text = "The Sequel"
 metadata/_custom_type_script = "uid://b4jy0dhl1u7ls"
 
@@ -152,6 +162,7 @@ trinkets_required = 0
 scene_link = SubResource("Resource_vl0qh")
 
 [node name="GatedButton5" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1484613795 instance=ExtResource("4_58g77")]
+visible = false
 layout_mode = 2
 text = "Bad Bacon"
 beers_required = 8
@@ -159,6 +170,7 @@ trinkets_required = 0
 scene_link = SubResource("Resource_a0y8h")
 
 [node name="GatedButton6" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=157853660 instance=ExtResource("4_58g77")]
+visible = false
 layout_mode = 2
 text = "The Duster"
 beers_required = 12
@@ -166,6 +178,7 @@ trinkets_required = 0
 scene_link = SubResource("Resource_yup17")
 
 [node name="GatedButton7" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1992642492 instance=ExtResource("4_58g77")]
+visible = false
 layout_mode = 2
 text = "One Last Job"
 beers_required = 15

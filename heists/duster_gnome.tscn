@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqxkc2frfadhi"]
+
+[ext_resource type="PackedScene" uid="uid://bb81gctml31av" path="res://heists/heist.tscn" id="1_kvb5d"]
+
+[node name="Heist" unique_id=61096881 instance=ExtResource("1_kvb5d")]
+level_name = "The Duster"

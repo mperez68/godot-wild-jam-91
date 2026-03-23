@@ -26,6 +26,9 @@ var teleport_queued: bool = false
 
 
 # ENGINE
+func _ready():
+	super()
+	animated_sprite_2d.sprite_frames = role_sprite_sheet_map[role]
 
 
 # PUBLIC

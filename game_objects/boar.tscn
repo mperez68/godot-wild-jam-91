@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://cyfd11xknv4wq"]
 
 [ext_resource type="PackedScene" uid="uid://c5guvhsa4pyvq" path="res://game_objects/character.tscn" id="1_amj5r"]
+[ext_resource type="Script" uid="uid://da665kv3dqd8f" path="res://game_objects/scripts/watcher.gd" id="2_3ry5f"]
 [ext_resource type="Texture2D" uid="uid://bf3p1dbp4137m" path="res://assets/sprites/boar.png" id="2_aurn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ivug"]
+atlas = ExtResource("2_aurn3")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx6vd"]
+atlas = ExtResource("2_aurn3")
+region = Rect2(100, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aurn3"]
 atlas = ExtResource("2_aurn3")
@@ -22,6 +31,17 @@ region = Rect2(60, 0, 20, 20)
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ry5f"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ivug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx6vd")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_aurn3")
 }, {
@@ -40,10 +60,12 @@ animations = [{
 }]
 
 [node name="Boar" unique_id=1426874908 groups=["computer"] instance=ExtResource("1_amj5r")]
+script = ExtResource("2_3ry5f")
+vis_range = 5.0
 display_name = "Boar"
 speed = 6
 action_limit = 1
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=1081542401]
 sprite_frames = SubResource("SpriteFrames_3ry5f")
-frame_progress = 0.82914454
+frame_progress = 0.8147981

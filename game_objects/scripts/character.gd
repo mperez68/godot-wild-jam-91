@@ -14,7 +14,6 @@ signal lock_changed(new_state: bool)
 @onready var aggro_sfx: AudioStreamPlayer2D = %AggroSfx
 @onready var trinket_sfx: AudioStreamPlayer2D = %TrinketSfx
 @onready var beer_sfx: AudioStreamPlayer2D = %BeerSfx
-@onready var turn_sfx: AudioStreamPlayer2D = %TurnSfx
 @onready var ability_sfx: AudioStreamPlayer2D = %AbilitySfx
 
 @export_placeholder("Character Name") var display_name: String = "":
@@ -62,8 +61,6 @@ func start_turn():
 
 func end_turn():
 	actions = 0
-	print("%s ends turn" % display_name)
-	turn_sfx.play()
 
 func can_travel(target: Vector3i) -> bool:
 	return TacGrid.get_map().is_navigable(grid_position, target, speed)

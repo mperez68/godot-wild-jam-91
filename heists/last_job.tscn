@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg837qhrfmydk"]
+
+[ext_resource type="PackedScene" uid="uid://bb81gctml31av" path="res://heists/heist.tscn" id="1_e7fay"]
+
+[node name="Heist" unique_id=61096881 instance=ExtResource("1_e7fay")]
+level_name = "One Last Job"

@@ -24,7 +24,7 @@ func _update():
 	var ready_character: Character = ready_queue.front()
 	if ready_character.actions <= 0:
 		_pop_ready()
-		pause_timer.start()
+		_start_timer_if_visible()
 		return
 	var map: Map = TacGrid.get_map()
 	if ready_character is Watcher and ready_character.chase_target:
@@ -32,7 +32,7 @@ func _update():
 			# Close enough to strike
 			ready_character.chase_target.stun(1)
 			ready_character.actions -= 1
-			pause_timer.start()
+			_start_timer_if_visible()
 			return
 		# Get route to approach
 		var route: Array[Vector3i] = map.get_route_near(ready_character.grid_position, ready_character.chase_target.grid_position).slice(0, ready_character.speed)
@@ -46,7 +46,15 @@ func _update():
 	else:
 		ready_character.turn()
 		_pop_ready()
-	pause_timer.start()
+	_start_timer_if_visible()
+
+func _start_timer_if_visible():
+	var map: Map = TacGrid.get_map()
+	if !ready_queue.is_empty() and !map.is_in_fog(ready_queue.front().grid_position):
+		pause_timer.start(1.0)
+	else:
+		pause_timer.start(0.01)
+	
 
 
 # SIGNALS
