@@ -1,6 +1,9 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://bgghdhgj1v8uh"]
 
+[ext_resource type="FontFile" uid="uid://bhicv1kkn7n67" path="res://assets/fonts/Fabled_Font.ttf" id="1_qygds"]
+
 [resource]
+font = ExtResource("1_qygds")
 font_size = 10
 outline_size = 4
 outline_color = Color(0.29411766, 0.23921569, 0.26666668, 1)

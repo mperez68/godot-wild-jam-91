@@ -6,6 +6,7 @@
 
 [node name="Orc" unique_id=1426874908 groups=["computer"] instance=ExtResource("1_bkovl")]
 script = ExtResource("2_ilgkb")
+behavior = 1
 vis_range = 4.0
 display_name = "Orc"
 speed = 2

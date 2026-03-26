@@ -26,7 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouse:
 		var map: Map = TacGrid.get_map()
 		var target_grid: Vector3i = map.local_to_grid3d(get_viewport().get_camera_2d().get_global_mouse_position(), true)
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			if !map.is_in_fog(target_grid) and ready_queue.front().move_to(target_grid):
 				map.clear_highlights()
 				_update()
@@ -55,6 +55,7 @@ func _update():
 		_pop_ready()
 		_update()
 		return
+	jump_to_active()
 	# UI
 	extract_button.disabled = !dropzone.has(ready_queue.front().grid_position)
 	special_button.disabled = ready_queue.front().role == Gnome.Role.MOOK
@@ -147,7 +148,6 @@ func _on_heist_turn_changed(new_turn: Heist.Turn) -> void:
 	if new_turn != Heist.Turn.PLAYER:
 		_turn_ended()
 		return
-	print("my turn!")
 	_start_turn()
 
 func _on_cycle_button_pressed(next: bool) -> void:

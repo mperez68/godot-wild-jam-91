@@ -5,8 +5,21 @@
 [ext_resource type="PackedScene" uid="uid://cd6hjqjtlew8v" path="res://ui/bound_camera.tscn" id="2_grtf1"]
 [ext_resource type="TileSet" uid="uid://du3hre2y3tm5x" path="res://resources/tilesets/heist_tileset.tres" id="2_vqqx4"]
 [ext_resource type="PackedScene" uid="uid://nm63odoq5xrf" path="res://ui/ui.tscn" id="3_ple83"]
+[ext_resource type="Texture2D" uid="uid://ckbucepddns6h" path="res://assets/menu_sprites/panel.png" id="4_j5tgh"]
 [ext_resource type="Texture2D" uid="uid://dv3es1s6lmsgl" path="res://assets/sprites/dropzone_tileset.png" id="7_u1ocn"]
 [ext_resource type="Script" uid="uid://b36sd8h3tn56b" path="res://heists/scripts/computer_controller.gd" id="12_u1ocn"]
+
+[sub_resource type="Gradient" id="Gradient_wg4e1"]
+offsets = PackedFloat32Array(0.8252427, 1)
+colors = PackedColorArray(0.7019608, 0.64705884, 0.33333334, 1, 0.46666667, 0.45490196, 0.23137255, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7fo53"]
+gradient = SubResource("Gradient_wg4e1")
+width = 320
+height = 180
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biufi"]
 texture = ExtResource("7_u1ocn")
@@ -361,6 +374,32 @@ one_shot = true
 [node name="BoundCamera" parent="." unique_id=1760976908 instance=ExtResource("2_grtf1")]
 unique_name_in_owner = true
 scroll_speed = 300.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1857117383]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1018394870]
+self_modulate = Color(0.46666667, 0.45490196, 0.23137255, 1)
+z_index = -1000
+offset_right = 320.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture2D_7fo53")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer" unique_id=1413354239]
+self_modulate = Color(0.46666667, 0.45490196, 0.23137255, 1)
+z_index = -999
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_j5tgh")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=1042850995]
 

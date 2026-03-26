@@ -1,6 +1,9 @@
 @tool
 class_name Watcher extends Character
 
+enum Behavior{ STAND, TURN, WANDER }
+
+@export var behavior: Behavior = Behavior.STAND
 @export var vis_range: float = 4.0
 
 var chase_target: Character
@@ -41,6 +44,22 @@ func scan_targets():
 			aggro_sprite_2d.show()
 			update_vis_ranges()
 			return
+
+func do_behavior():
+	match behavior:
+		Behavior.STAND:
+			pass
+		Behavior.TURN:
+			turn()
+		Behavior.WANDER:
+			var directions := [Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT, Vector2i.UP]
+			directions.shuffle()
+			for direction in directions:
+				var map: Map = TacGrid.get_map()
+				var new_pos: Vector3i = grid_position + Vector3i(direction.x, direction.y, 0)
+				if map.can_stand(new_pos):
+					face_and_move(new_pos)
+					return
 
 func turn(dir: int = 0):
 	super(dir)

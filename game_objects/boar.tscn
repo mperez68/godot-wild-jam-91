@@ -61,7 +61,8 @@ animations = [{
 
 [node name="Boar" unique_id=1426874908 groups=["computer"] instance=ExtResource("1_amj5r")]
 script = ExtResource("2_3ry5f")
-vis_range = 5.0
+behavior = 0
+vis_range = 3.0
 display_name = "Boar"
 speed = 6
 action_limit = 1

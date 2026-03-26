@@ -31,8 +31,8 @@ func _start_turn():
 			node.start_turn()
 			node.lock_changed.connect(_on_character_lock_changed)
 			ready_queue.push_back(node)
-	jump_to_active()
 	_update()
+	jump_to_active()
 
 func _end_turn():
 	end_turn.emit()

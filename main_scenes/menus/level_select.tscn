@@ -162,18 +162,16 @@ trinkets_required = 0
 scene_link = SubResource("Resource_vl0qh")
 
 [node name="GatedButton5" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1484613795 instance=ExtResource("4_58g77")]
-visible = false
 layout_mode = 2
 text = "Bad Bacon"
-beers_required = 8
+beers_required = 7
 trinkets_required = 0
 scene_link = SubResource("Resource_a0y8h")
 
 [node name="GatedButton6" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=157853660 instance=ExtResource("4_58g77")]
-visible = false
 layout_mode = 2
 text = "The Duster"
-beers_required = 12
+beers_required = 10
 trinkets_required = 0
 scene_link = SubResource("Resource_yup17")
 
@@ -181,14 +179,14 @@ scene_link = SubResource("Resource_yup17")
 visible = false
 layout_mode = 2
 text = "One Last Job"
-beers_required = 15
+beers_required = 12
 trinkets_required = 0
 scene_link = SubResource("Resource_xh6qr")
 
 [node name="GatedButton8" parent="MarginContainer/VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1553275230 instance=ExtResource("4_58g77")]
+visible = false
 layout_mode = 2
 text = "The Sequel"
-beers_required = 20
 trinkets_required = 7
 scene_link = SubResource("Resource_nws1h")
 

@@ -21,6 +21,7 @@ func _update():
 		_end_turn()
 		return
 	# Check actions left
+	jump_to_active()
 	var ready_character: Character = ready_queue.front()
 	if ready_character.actions <= 0:
 		_pop_ready()
@@ -44,7 +45,7 @@ func _update():
 			ready_character.move_to(route.back())
 			return
 	else:
-		ready_character.turn()
+		ready_character.do_behavior()
 		_pop_ready()
 	_start_timer_if_visible()
 
